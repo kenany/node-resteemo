@@ -1,10 +1,12 @@
 var chai = require('chai');
+var _ = require('lodash');
 var nock = require('nock');
 var resteemo = require('../');
 var should = chai.should();
 
 var TEST_SUMMONER = 'guardsmanbob';
 var TEST_PLATFORM = 'euw';
+var TEST_PLATFORM_FULL = 'Europe_West';
 
 // Below, RESTeemo's API is "mocked." This allows us to test node-resteemo
 // without actually querying the online API.
@@ -14,10 +16,18 @@ var TEST_PLATFORM = 'euw';
 var scout = nock('http://api.captainteemo.com')
   .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER)
   .replyWithFile(200, __dirname + '/data/profile.json')
+
   .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER + '/recent_games')
   .replyWithFile(200, __dirname + '/data/recent_games.json')
   .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER + '/influence_points')
   .replyWithFile(200, __dirname + '/data/influence_points.json');
+
+// Two calls are made, two interceptors are required.
+_([1, 2]).forEach(function() {
+  scout
+    .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER)
+    .replyWithFile(200, __dirname + '/data/profile.json')
+});
 
 describe('node-resteemo', function() {
   before(function() {
@@ -30,14 +40,20 @@ describe('node-resteemo', function() {
   it('should export a function', function() {
     resteemo.should.be.a('function');
   });
+  it('should work with full platform names', function(done) {
+    this.teemo.player.create(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, profile) {
+      if (err) return done(err);
+      done();
+    });
+  });
   it('should throw error if referer string is not provided', function() {
-    this.veigar.should.throw(/referrerString/);
+    this.veigar.should.throw(/refererString/);
   });
 
   describe('player', function() {
     describe('create', function() {
       before(function(done) {
-        this.teemo.player.create(TEST_PLATFORM, TEST_SUMMONER, function(err, profile) {
+        this.teemo.player.create(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, profile) {
           if (err) return done(err);
           this.profile = profile;
           done();

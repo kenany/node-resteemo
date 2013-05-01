@@ -1,9 +1,16 @@
 var json3 = require('json3');
 var _ = require('lodash');
-var querystring = require('querystring');
 var request = require('request');
 
 var ENDPOINT = 'http://api.captainteemo.com';
+var PLATFORMS = [
+  {'short': 'na', 'full': 'North_America'},
+  {'short': 'br', 'full': 'Brasil'},
+  {'short': 'euw', 'full': 'Europe_West'},
+  {'short': 'eun', 'full': 'Europe_East'},
+  {'short': 'ru', 'full': 'Russia'},
+  {'short': 'tr', 'full': 'Turkey'}
+];
 
 function responseHandler(req, callback) {
   if (!_.isFunction(callback)) {
@@ -87,16 +94,38 @@ module.exports = function(refererString) {
     prepareRequest('GET', path, cb);
   };
 
+  var prepareGet = function(platform, summoner, call, cb) {
+    if (_.size(platform) > 3) {
+      var validPlatform = _.filter(PLATFORMS, {'full': platform});
+      if (!_.isEmpty(validPlatform)) {
+        platform = _.where(PLATFORMS, {'full': platform})[0].short;
+      }
+    }
+    else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
+      throw new Error('node-resteemo - invalid platform');
+    }
+
+    if (_.isNull(call)) {
+      get('/player/' + platform + '/' + summoner, cb);
+    }
+    else if (_.isEqual(call, '/recent_games')) {
+      get('/player/' + platform + '/' + summoner + '/recent_games', cb);
+    }
+    else if (_.isEqual(call, '/influence_points')) {
+      get('/player/' + platform + '/' + summoner + '/influence_points', cb);
+    }
+  };
+
   return {
     player: {
       create: function(platform, summoner, cb) {
-        get('/player/' + platform + '/' + summoner, cb);
+        prepareGet(platform, summoner, null, cb);
       },
       recentGames: function(platform, summoner, cb) {
-        get('/player/' + platform + '/' + summoner + '/recent_games', cb);
+        prepareGet(platform, summoner, '/recent_games', cb);
       },
       influencePoints: function(platform, summoner, cb) {
-        get('/player/' + platform + '/' + summoner + '/influence_points', cb);
+        prepareGet(platform, summoner, '/influence_points', cb);
       }
     }
   };
