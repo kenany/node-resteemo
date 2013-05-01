@@ -94,7 +94,13 @@ module.exports = function(refererString) {
     prepareRequest('GET', path, cb);
   };
 
-  var prepareGet = function(platform, summoner, call, cb) {
+  /**
+   * Converts full platform string to their shorthand version.
+   *
+   * @param {String} platform The platform to shorten.
+   * @param {Function} cb(shortPlatform) The function called after shortening.
+   */
+  var normalizePlatform = function(platform, cb) {
     if (_.size(platform) > 3) {
       var validPlatform = _.filter(PLATFORMS, {'full': platform});
       if (!_.isEmpty(validPlatform)) {
@@ -104,28 +110,25 @@ module.exports = function(refererString) {
     else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
       throw new Error('node-resteemo - invalid platform');
     }
-
-    if (_.isNull(call)) {
-      get('/player/' + platform + '/' + summoner, cb);
-    }
-    else if (_.isEqual(call, '/recent_games')) {
-      get('/player/' + platform + '/' + summoner + '/recent_games', cb);
-    }
-    else if (_.isEqual(call, '/influence_points')) {
-      get('/player/' + platform + '/' + summoner + '/influence_points', cb);
-    }
+    cb(platform);
   };
 
   return {
     player: {
       create: function(platform, summoner, cb) {
-        prepareGet(platform, summoner, null, cb);
+        normalizePlatform(platform, function(shortPlatform) {
+          get('/player/' + shortPlatform + '/' + summoner, cb);
+        });
       },
       recentGames: function(platform, summoner, cb) {
-        prepareGet(platform, summoner, '/recent_games', cb);
+        normalizePlatform(platform, function(shortPlatform) {
+          get('/player/' + shortPlatform + '/' + summoner + '/recent_games', cb);
+        });
       },
       influencePoints: function(platform, summoner, cb) {
-        prepareGet(platform, summoner, '/influence_points', cb);
+        normalizePlatform(platform, function(shortPlatform) {
+          get('/player/' + shortPlatform + '/' + summoner + '/influence_points', cb);
+        });
       }
     }
   };
