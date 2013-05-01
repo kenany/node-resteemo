@@ -16,15 +16,11 @@ var PLATFORMS = [
  * Parse JSON data from a request and refine said data.
  *
  * @param {Object} req The request instance to handle.
- * @param {Function} callback The callback, which is given two arguments:
+ * @param {Function} cb The callback, which is given two arguments:
  *   `(err, gift)`, where `gift` is the refined Object from the response that
  *   `req` gave.
  */
-function responseHandler(req, callback) {
-  if (!_.isFunction(callback)) {
-    throw new Error('node-resteemo - missing callback');
-  }
-
+function responseHandler(req, cb) {
   req.on('response', function(res) {
     var response = '';
     res.setEncoding('utf8');
