@@ -9,7 +9,7 @@ var TEST_PLATFORM = 'euw';
 // Below, RESTeemo's API is "mocked." This allows us to test node-resteemo
 // without actually querying the online API.
 //
-// Good: faster tests
+// Good: faster tests that work even when the API is down
 // Bad: suite won't tell us when a RESTeemo update is not backwards-compatible
 var scout = nock('http://api.captainteemo.com')
   .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER)
