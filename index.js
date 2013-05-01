@@ -63,7 +63,7 @@ function responseHandler(req, cb) {
           icon: info.icon
         };
       }
-      callback(err, gift);
+      cb(err, gift);
     });
   });
 }
@@ -121,8 +121,8 @@ module.exports = function(refererString) {
    * Converts a full platform string to its shorthand version.
    *
    * @param {String} platform The platform to shorten.
-   * @param {Function} cb The callback, which is given one argument:
-   *   `(shortPlatform)`, where `shortPlatform` is the shorthand version of
+   * @param {Function} cb The callback, which is given two arguments:
+   *   `(err, shortPlatform)`, where `shortPlatform` is the shorthand version of
    *   `platform`.
    */
   var normalizePlatform = function(platform, cb) {
@@ -133,7 +133,7 @@ module.exports = function(refererString) {
       }
     }
     else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
-      throw new Error('node-resteemo - invalid platform');
+      cb(new Error('node-resteemo - invalid platform'), null);
     }
     cb(platform);
   };
