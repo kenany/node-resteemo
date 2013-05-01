@@ -19,7 +19,7 @@ var teemo = require('resteemo')('string with contact info');
 
 ### Player requests
 
-#### `teemo.player.create(platform, summoner)`
+#### `teemo.player.create(platform, summoner, callback)`
 
 Returns an Object `profile` containing ID-based data for String `summoner` on
 String `platform`. Account and summoner IDs are not unique across platforms.
@@ -44,7 +44,7 @@ teemo.player.create('euw', 'guardsmanbob', function(err, profile) {
 });
 ```
 
-#### `teemo.player.recentGames(summoner, platform)`
+#### `teemo.player.recentGames(platform, summoner, callback)`
 
 > **Not ready for use**
 
@@ -59,7 +59,7 @@ teemo.player.recentGames('euw', 'guardsmanbob', function(err, games) {
 }));
 ```
 
-#### `teemo.player.influencePoints(summoner, platform)`
+#### `teemo.player.influencePoints(platform, summoner, callback)`
 
 Returns lifetime influence point gains for String `summoner` on String
 `platform`.
