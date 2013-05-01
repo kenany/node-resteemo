@@ -1,0 +1,40 @@
+{
+  "name": "resteemo",
+  "version": "1.0.0",
+  "description": "RESTeemo API wrapper in Node.",
+  "keywords": [
+    "api",
+    "rest",
+    "league-of-legends"
+  ],
+  "homepage": "https://github.com/KenanY/node-resteemo",
+  "bugs": {
+    "url": "https://github.com/KenanY/node-resteemo/issues"
+  },
+  "author": {
+    "name": "Kenan Yildirim",
+    "email": "kenan@kenany.me",
+    "web": "http://kenany.me/"
+  },
+  "main": "./index.js",
+  "directories": {
+    "test": "./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KenanY/node-resteemo.git"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "dependencies": {
+    "json3": "~3.2.0",
+    "lodash": "~1.2.0",
+    "request": "~2.20.0"
+  },
+  "devDependencies": {
+    "chai": "~1.5.0",
+    "mocha": "~1.9.0",
+    "nock": "~0.17.0"
+  }
+}

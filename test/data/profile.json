@@ -1,0 +1,15 @@
+{
+    "_": {
+        "APP_ID": null
+    },
+    "success": true,
+    "shard": "Europe_West:NGUxZmQyNzU5MDY0NGZmNThlODE4YmZkODc5OTc3OWIyNzVmMzQ0Nw",
+    "data": {
+        "accountId": 24132405,
+        "summonerId": 20820067,
+        "name": "Guardsman Bob",
+        "icon": 30,
+        "internalName": "guardsmanbob",
+        "level": 30
+    }
+}
