@@ -57,9 +57,9 @@ function responseHandler(req, callback) {
   });
 }
 
-module.exports = function(referrerString) {
-  if (!_.isString(referrerString)) {
-    throw new Error('node-resteemo - `referrerString` not defined');
+module.exports = function(refererString) {
+  if (!_.isString(refererString)) {
+    throw new Error('node-resteemo - `refererString` not defined');
   }
 
   function prepareRequest(method, path, cb) {
@@ -69,7 +69,7 @@ module.exports = function(referrerString) {
 
     var headers = {
       'Accept'    : 'application/json',
-      'User-Agent': referrerString
+      'User-Agent': refererString
     };
 
     var requestOptions = {
