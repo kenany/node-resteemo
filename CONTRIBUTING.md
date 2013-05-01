@@ -1,0 +1,5 @@
+# Contributing
+
+``` bash
+$ npm test
+```
