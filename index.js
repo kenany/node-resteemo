@@ -34,7 +34,11 @@ function responseHandler(req, callback) {
       var gift;
       if (_.contains(res.request.uri.path, 'recent_games')) {
         gift = info.gameStatistics.array;
-      } else {
+      }
+      else if (_.contains(res.request.uri.path, 'influence_points')) {
+        gift = info;
+      }
+      else {
         gift = {
           summoner: {
             id: info.summonerId
@@ -90,6 +94,9 @@ module.exports = function(referrerString) {
       },
       recentGames: function(platform, summoner, cb) {
         get('/player/' + platform + '/' + summoner + '/recent_games', cb);
+      },
+      influencePoints: function(platform, summoner, cb) {
+        get('/player/' + platform + '/' + summoner + '/influence_points', cb);
       }
     }
   };

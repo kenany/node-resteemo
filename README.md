@@ -59,6 +59,20 @@ teemo.player.recentGames('euw', 'guardsmanbob', function(err, games) {
 }));
 ```
 
+#### `teemo.player.influencePoints(summoner, platform)`
+
+Returns lifetime influence point gains for String `summoner` on String
+`platform`.
+
+``` javascript
+teemo.player.recentGames('euw', 'guardsmanbob', function(err, points) {
+  if (err) throw err;
+
+  console.log(points);
+  // => 596797
+}));
+```
+
 ## Supported platforms
 
 <table>
