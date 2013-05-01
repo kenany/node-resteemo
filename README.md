@@ -91,3 +91,9 @@ teemo.player.recentGames('euw', 'guardsmanbob', function(err, games) {
     <td>Turkey</td>
   </tr>
 </table>
+
+## Release notes
+
+### 1.0.0
+
+- Initial release
