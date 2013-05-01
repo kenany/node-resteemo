@@ -12,6 +12,14 @@ var PLATFORMS = [
   {'short': 'tr', 'full': 'Turkey'}
 ];
 
+/**
+ * Parse JSON data from a request and refine said data.
+ *
+ * @param {Object} req The request instance to handle.
+ * @param {Function} callback The callback, which is given two arguments:
+ *   `(err, gift)`, where `gift` is the refined Object from the response that
+ *   `req` gave.
+ */
 function responseHandler(req, callback) {
   if (!_.isFunction(callback)) {
     throw new Error('node-resteemo - missing callback');
@@ -64,11 +72,24 @@ function responseHandler(req, callback) {
   });
 }
 
+/**
+ * Establishes the user agent of all API calls.
+ *
+ * @param {String} refererString The referer string to use in API calls.
+ * @return {Object}
+ */
 module.exports = function(refererString) {
   if (!_.isString(refererString)) {
     throw new Error('node-resteemo - `refererString` not defined');
   }
 
+  /**
+   * Contructs the headers and options for the API request.
+   *
+   * @param {String} method The HTTP verb.
+   * @param {String} path The path to query from the API endpoint.
+   * @param {Function} cb The callback, which is passed to `responseHandler`.
+   */
   function prepareRequest(method, path, cb) {
     if (!_.isFunction(cb)) {
       throw new Error('node-resteemo - missing callback');
@@ -90,15 +111,23 @@ module.exports = function(refererString) {
     req.end();
   }
 
+  /**
+   * Begins the preparation for a GET request
+   *
+   * @param {String} path The path to query from the API endpoint.
+   * @param {Function} cb The callback, which is passed to `prepareRequest`.
+   */
   var get = function(path, cb) {
     prepareRequest('GET', path, cb);
   };
 
   /**
-   * Converts full platform string to their shorthand version.
+   * Converts a full platform string to its shorthand version.
    *
    * @param {String} platform The platform to shorten.
-   * @param {Function} cb(shortPlatform) The function called after shortening.
+   * @param {Function} cb The callback, which is given one argument:
+   *   `(shortPlatform)`, where `shortPlatform` is the shorthand version of
+   *   `platform`.
    */
   var normalizePlatform = function(platform, cb) {
     if (_.size(platform) > 3) {

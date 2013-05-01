@@ -122,4 +122,4 @@ shorthand version.
 
 ### 1.1.0
 
-- Add `teemo.player.influencePoints(summoner, platform)`
+- Add `.player.influencePoints(platform, summoner, cb)`
