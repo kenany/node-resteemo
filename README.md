@@ -108,6 +108,6 @@ teemo.player.recentGames('euw', 'guardsmanbob', function(err, points) {
 
 ## Release notes
 
-### 1.0.0
+### 1.1.0
 
-- Initial release
+- Add `teemo.player.influencePoints(summoner, platform)`
