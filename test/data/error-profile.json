@@ -1,0 +1,9 @@
+{
+    "_": {
+        "APP_ID": null
+    },
+    "success": false,
+    "shard": "Europe_West:NGUxZmQyNzU5MDY0NGZmNThlODE4YmZkODc5OTc3OWIyNzVmMzQ0Nw==",
+    "eid": 503,
+    "error_message": "The summoner name could not be found. (or the backend failed to respond)"
+}

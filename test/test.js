@@ -1,32 +1,9 @@
 var chai = require('chai');
-var _ = require('lodash');
-var nock = require('nock');
-var resteemo = require('../');
 var should = chai.should();
 
-var TEST_SUMMONER = 'guardsmanbob';
-var TEST_PLATFORM = 'euw';
-var TEST_PLATFORM_FULL = 'Europe_West';
-var PLAYER_PATH = '/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER;
-var DATA_FOLDER = __dirname + '/data/';
-
-// Below, RESTeemo's API is "mocked." This allows us to test node-resteemo
-// without actually querying the online API.
-//
-// Good: faster tests that work even when the API is down
-// Bad: suite won't tell us when a RESTeemo update is not backwards-compatible
-var scout = nock('http://api.captainteemo.com')
-  .get(PLAYER_PATH + '/recent_games')
-  .replyWithFile(200, DATA_FOLDER + 'recent_games.json')
-  .get(PLAYER_PATH + '/influence_points')
-  .replyWithFile(200, DATA_FOLDER + 'influence_points.json');
-
-// Two calls are made to this path, so two interceptors are required.
-_([1, 2]).forEach(function() {
-  scout
-    .get(PLAYER_PATH)
-    .replyWithFile(200, DATA_FOLDER + 'profile.json')
-});
+var resteemo = require('../');
+var scout = require('./mock.js');
+var c = require('./constants.js');
 
 describe('node-resteemo', function() {
   before(function() {
@@ -44,20 +21,18 @@ describe('node-resteemo', function() {
   it('should export a function', function() {
     resteemo.should.be.a('function');
   });
-  it('should work with full platform names', function(done) {
-    this.teemo.player.create(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, profile) {
-      if (err) return done(err);
-      done();
-    });
-  });
   it('should throw error if referer string is not provided', function() {
     this.veigar.should.throw(/refererString/);
   });
 
   describe('player', function() {
+    it('should return an object', function() {
+      this.teemo.player.should.be.an('object');
+    });
+
     describe('create', function() {
       before(function(done) {
-        this.teemo.player.create(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, profile) {
+        this.teemo.player.create(c.TEST_PLATFORM, c.TEST_SUMMONER, function(err, profile) {
           if (err) return done(err);
           this.profile = profile;
           done();
@@ -65,6 +40,10 @@ describe('node-resteemo', function() {
       });
       after(function() {
         this.profile = null;
+      });
+
+      it('should be a function', function() {
+        this.teemo.player.create.should.be.a('function');
       });
       it('should return an object', function() {
         profile.should.be.an('object');
@@ -81,11 +60,23 @@ describe('node-resteemo', function() {
         profile.level.should.be.a('number');
         profile.icon.should.be.a('number');
       });
+      it('should work with full platform names', function(done) {
+        this.teemo.player.create(c.TEST_PLATFORM_FULL, c.TEST_SUMMONER, function(err, ignored) {
+          should.not.exist(err);
+          done();
+        });
+      });
+      it('should return errors if api fails', function(done) {
+        this.teemo.player.create(c.TEST_PLATFORM, 'guardsmanbo', function(err, noProfile) {
+          should.not.exist(noProfile);
+          done();
+        });
+      });
     });
 
     describe('recentGames', function() {
       before(function(done) {
-        this.teemo.player.recentGames(TEST_PLATFORM, TEST_SUMMONER, function(err, games) {
+        this.teemo.player.recentGames(c.TEST_PLATFORM, c.TEST_SUMMONER, function(err, games) {
           if (err) return done(err);
           this.games = games;
           done();
@@ -98,11 +89,17 @@ describe('node-resteemo', function() {
       it('should return recent games', function() {
         games.should.be.an('array');
       });
+      it('should work with full platform names', function(done) {
+        this.teemo.player.recentGames(c.TEST_PLATFORM_FULL, c.TEST_SUMMONER, function(err, ignored) {
+          should.not.exist(err);
+          done();
+        });
+      });
     });
 
     describe('influencePoints', function() {
       before(function(done) {
-        this.teemo.player.influencePoints(TEST_PLATFORM, TEST_SUMMONER, function(err, points) {
+        this.teemo.player.influencePoints(c.TEST_PLATFORM, c.TEST_SUMMONER, function(err, points) {
           if (err) return done(err);
           this.points = points;
           done();
@@ -114,6 +111,12 @@ describe('node-resteemo', function() {
 
       it('should return influence points', function() {
         points.should.be.a('number');
+      });
+      it('should work with full platform names', function(done) {
+        this.teemo.player.influencePoints(c.TEST_PLATFORM_FULL, c.TEST_SUMMONER, function(err, ignored) {
+          should.not.exist(err);
+          done();
+        });
       });
     });
   });

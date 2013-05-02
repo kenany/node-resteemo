@@ -28,22 +28,25 @@ function responseHandler(req, cb) {
       response += chunk;
     });
     res.on('end', function() {
-      var err = 200 === res.statusCode ? null : res.statusCode;
       try {
         response = json3.parse(response);
       }
       catch(e) {
-        err = 1;
-        response = {error: {message: 'node-resteemo - invalid json response'}};
+        cb(new Error('node-resteemo - invalid json response'), null);
       }
-      if (err) {
-        err = {statusCode: err, response: response};
+
+      if (!response.success) {
+        cb(new Error('node-resteemo - api failed'), null);
+        return;
       }
 
       // Construct the final object.
       var info = response.data;
       var gift;
       if (_.contains(res.request.uri.path, 'recent_games')) {
+        if (!info._success) {
+          cb(new Error('node-resteemo - api failed to return recent games'), null);
+        }
         gift = info.gameStatistics.array;
       }
       else if (_.contains(res.request.uri.path, 'influence_points')) {
@@ -63,7 +66,7 @@ function responseHandler(req, cb) {
           icon: info.icon
         };
       }
-      cb(err, gift);
+      cb(null, gift);
     });
   });
 }

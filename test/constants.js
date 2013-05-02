@@ -1,0 +1,13 @@
+var TEST_SUMMONER = 'guardsmanbob';
+var TEST_PLATFORM = 'euw';
+var TEST_PLATFORM_FULL = 'Europe_West';
+var PLAYER_PATH = '/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER;
+var DATA_FOLDER = __dirname + '/data/';
+
+module.exports = {
+  TEST_SUMMONER: TEST_SUMMONER,
+  TEST_PLATFORM: TEST_PLATFORM,
+  TEST_PLATFORM_FULL: TEST_PLATFORM_FULL,
+  PLAYER_PATH: PLAYER_PATH,
+  DATA_FOLDER: DATA_FOLDER
+};
