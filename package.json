@@ -25,7 +25,8 @@
     "url": "https://github.com/KenanY/node-resteemo.git"
   },
   "scripts": {
-    "test": "istanbul cover --report 'html' _mocha -- -R spec"
+    "cover": "istanbul cover --report 'html' _mocha -- -R spec",
+    "test": "mocha -R spec"
   },
   "dependencies": {
     "json3": "~3.2.0",
