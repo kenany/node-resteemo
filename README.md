@@ -1,5 +1,8 @@
 # node-resteemo
 
+[![Build Status](https://travis-ci.org/KenanY/node-resteemo.png)](https://travis-ci.org/KenanY/node-resteemo)
+[![Dependency Status](https://gemnasium.com/KenanY/node-resteemo.png)](https://gemnasium.com/KenanY/node-resteemo)
+
 RESTeemo API wrapper for Node. Powered by Quickfind.
 
 ## Installation
