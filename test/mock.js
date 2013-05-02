@@ -11,7 +11,15 @@ var c = require('./constants.js');
 // Bad: suite won't tell us when a RESTeemo update is not backwards-compatible
 var scout = nock('http://api.captainteemo.com')
 
-  // Summoner lookup failure mock
+  // Invalid JSON response
+  .get('/player/' + c.TEST_PLATFORM + '/fakejson')
+  .replyWithFile(200, c.DATA_FOLDER + 'error-json.json')
+  .get('/player/' + c.TEST_PLATFORM + '/fakejson/recent_games')
+  .replyWithFile(200, c.DATA_FOLDER + 'error-json.json')
+  .get('/player/' + c.TEST_PLATFORM + '/fakejson/influence_points')
+  .replyWithFile(200, c.DATA_FOLDER + 'error-json.json')
+
+  // Summoner lookup failure
   .get('/player/' + c.TEST_PLATFORM + '/guardsmanbo')
   .replyWithFile(503, c.DATA_FOLDER + 'error-profile.json');
 

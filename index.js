@@ -33,6 +33,7 @@ function responseHandler(req, cb) {
       }
       catch(e) {
         cb(new Error('node-resteemo - invalid json response'), null);
+        return;
       }
 
       if (!response.success) {

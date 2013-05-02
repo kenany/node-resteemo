@@ -66,8 +66,15 @@ describe('node-resteemo', function() {
           done();
         });
       });
-      it('should return errors if api fails', function(done) {
+      it('should return error if api fails', function(done) {
         this.teemo.player.create(c.TEST_PLATFORM, 'guardsmanbo', function(err, noProfile) {
+          should.not.exist(noProfile);
+          done();
+        });
+      });
+      it('should return error if json cannot be parsed', function(done) {
+        this.teemo.player.create(c.TEST_PLATFORM, 'fakejson', function(err, noProfile) {
+          err.should.be.an('object');
           should.not.exist(noProfile);
           done();
         });
@@ -92,6 +99,14 @@ describe('node-resteemo', function() {
       it('should work with full platform names', function(done) {
         this.teemo.player.recentGames(c.TEST_PLATFORM_FULL, c.TEST_SUMMONER, function(err, ignored) {
           should.not.exist(err);
+          profile.should.be.an('object');
+          done();
+        });
+      });
+      it('should return error if json cannot be parsed', function(done) {
+        this.teemo.player.recentGames(c.TEST_PLATFORM, 'fakejson', function(err, noProfile) {
+          err.should.be.an('object');
+          should.not.exist(noProfile);
           done();
         });
       });
@@ -115,6 +130,14 @@ describe('node-resteemo', function() {
       it('should work with full platform names', function(done) {
         this.teemo.player.influencePoints(c.TEST_PLATFORM_FULL, c.TEST_SUMMONER, function(err, ignored) {
           should.not.exist(err);
+          profile.should.be.an('object');
+          done();
+        });
+      });
+      it('should return error if json cannot be parsed', function(done) {
+        this.teemo.player.influencePoints(c.TEST_PLATFORM, 'fakejson', function(err, noProfile) {
+          err.should.be.an('object');
+          should.not.exist(noProfile);
           done();
         });
       });
