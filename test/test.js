@@ -7,6 +7,8 @@ var should = chai.should();
 var TEST_SUMMONER = 'guardsmanbob';
 var TEST_PLATFORM = 'euw';
 var TEST_PLATFORM_FULL = 'Europe_West';
+var PLAYER_PATH = '/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER;
+var DATA_FOLDER = __dirname + '/data/';
 
 // Below, RESTeemo's API is "mocked." This allows us to test node-resteemo
 // without actually querying the online API.
@@ -14,19 +16,16 @@ var TEST_PLATFORM_FULL = 'Europe_West';
 // Good: faster tests that work even when the API is down
 // Bad: suite won't tell us when a RESTeemo update is not backwards-compatible
 var scout = nock('http://api.captainteemo.com')
-  .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER)
-  .replyWithFile(200, __dirname + '/data/profile.json')
+  .get(PLAYER_PATH + '/recent_games')
+  .replyWithFile(200, DATA_FOLDER + 'recent_games.json')
+  .get(PLAYER_PATH + '/influence_points')
+  .replyWithFile(200, DATA_FOLDER + 'influence_points.json');
 
-  .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER + '/recent_games')
-  .replyWithFile(200, __dirname + '/data/recent_games.json')
-  .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER + '/influence_points')
-  .replyWithFile(200, __dirname + '/data/influence_points.json');
-
-// Two calls are made, two interceptors are required.
+// Two calls are made to this path, so two interceptors are required.
 _([1, 2]).forEach(function() {
   scout
-    .get('/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER)
-    .replyWithFile(200, __dirname + '/data/profile.json')
+    .get(PLAYER_PATH)
+    .replyWithFile(200, DATA_FOLDER + 'profile.json')
 });
 
 describe('node-resteemo', function() {
