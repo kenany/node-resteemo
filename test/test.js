@@ -37,6 +37,11 @@ describe('node-resteemo', function() {
     // An evil yordle who wants to abuse the API
     this.veigar = resteemo;
   });
+  after(function() {
+    this.teemo = null;
+    this.veigar = null;
+  });
+
   it('should export a function', function() {
     resteemo.should.be.a('function');
   });
@@ -58,6 +63,9 @@ describe('node-resteemo', function() {
           this.profile = profile;
           done();
         });
+      });
+      after(function() {
+        this.profile = null;
       });
       it('should return an object', function() {
         profile.should.be.an('object');
@@ -84,6 +92,10 @@ describe('node-resteemo', function() {
           done();
         });
       });
+      after(function() {
+        this.games = null;
+      });
+
       it('should return recent games', function() {
         games.should.be.an('array');
       });
@@ -97,6 +109,10 @@ describe('node-resteemo', function() {
           done();
         });
       });
+      after(function() {
+        this.points = null;
+      });
+
       it('should return influence points', function() {
         points.should.be.a('number');
       });
