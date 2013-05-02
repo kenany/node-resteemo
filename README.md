@@ -123,6 +123,8 @@ shorthand version.
 
 ## Release notes
 
-### 1.1.0
+### 1.2.0
 
-- Add `.player.influencePoints(platform, summoner, cb)`
+- Add support for full platform names
+- Remove redundant check of the existence of a callback
+- Update request to v2.21.0
