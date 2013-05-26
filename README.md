@@ -78,7 +78,7 @@ teemo.player.recentGames('euw', 'guardsmanbob', function(err, points) {
 
 ## Supported platforms
 
-Below is a table of the platforms that RESTeemo claims it supports. When polling
+Below is a table of the platforms that RESTeemo supports. When polling
 the API, the shorthand version of a platform is necessary, but you can pass the
 full version to node-resteemo if you'd like and it will internally use the
 shorthand version.
@@ -87,37 +87,30 @@ shorthand version.
   <tr>
     <th>Short</th>
     <th>Full</th>
-    <th>Actually supported</th>
   </tr>
   <tr>
     <td>na</td>
     <td>North_America</td>
-    <td>✔</td>
   </tr>
   <tr>
     <td>br</td>
     <td>Brasil</td>
-    <td>✔</td>
   </tr>
   <tr>
     <td>euw</td>
     <td>Europe_West</td>
-    <td>✔</td>
   </tr>
   <tr>
     <td>eun</td>
     <td>Europe_East</td>
-    <td>✔</td>
   </tr>
   <tr>
     <td>ru</td>
     <td>Russia</td>
-    <td>✘</td>
   </tr>
   <tr>
     <td>tr</td>
     <td>Turkey</td>
-    <td>✘</td>
   </tr>
 </table>
 
