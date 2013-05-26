@@ -133,7 +133,7 @@ module.exports = function(refererString) {
   }
 
   /**
-   * Begins the preparation for a GET request
+   * Begins the preparation for a GET request.
    *
    * @param {String} path The path to query from the API endpoint.
    * @param {Function} cb The callback, which is passed to `prepareRequest`.
