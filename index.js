@@ -13,6 +13,27 @@ var PLATFORMS = [
 ];
 
 /**
+ * Converts a full platform string to its shorthand version.
+ *
+ * @param {String} platform The platform to shorten.
+ * @param {Function} cb The callback, which is given two arguments:
+ *   `(err, shortPlatform)`, where `shortPlatform` is the shorthand version of
+ *   `platform`.
+ */
+var normalizePlatform = function(platform, cb) {
+  if (_.size(platform) > 3) {
+    var validPlatform = _.filter(PLATFORMS, {'full': platform});
+    if (!_.isEmpty(validPlatform)) {
+      platform = _.where(PLATFORMS, {'full': platform})[0].short;
+    }
+  }
+  else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
+    cb(new Error('node-resteemo - invalid platform'), null);
+  }
+  cb(platform);
+};
+
+/**
  * Parse JSON data from a request and refine said data.
  *
  * @param {Object} req The request instance to handle.
@@ -119,27 +140,6 @@ module.exports = function(refererString) {
    */
   var get = function(path, cb) {
     prepareRequest('GET', path, cb);
-  };
-
-  /**
-   * Converts a full platform string to its shorthand version.
-   *
-   * @param {String} platform The platform to shorten.
-   * @param {Function} cb The callback, which is given two arguments:
-   *   `(err, shortPlatform)`, where `shortPlatform` is the shorthand version of
-   *   `platform`.
-   */
-  var normalizePlatform = function(platform, cb) {
-    if (_.size(platform) > 3) {
-      var validPlatform = _.filter(PLATFORMS, {'full': platform});
-      if (!_.isEmpty(validPlatform)) {
-        platform = _.where(PLATFORMS, {'full': platform})[0].short;
-      }
-    }
-    else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
-      cb(new Error('node-resteemo - invalid platform'), null);
-    }
-    cb(platform);
   };
 
   return {
