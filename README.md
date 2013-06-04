@@ -124,8 +124,6 @@ shorthand version.
 
 ## Release notes
 
-### 1.2.0
+### 1.2.1
 
-- Add support for full platform names
-- Remove redundant check of the existence of a callback
-- Update request to v2.21.0
+- Support Latin America platforms
