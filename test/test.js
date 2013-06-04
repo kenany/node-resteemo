@@ -5,6 +5,7 @@ var scout = nock('http://api.captainteemo.com');
 
 var resteemo = require('../');
 
+// Constants
 var TEST_SUMMONER = 'guardsmanbob';
 var TEST_PLATFORM = 'euw';
 var TEST_PLATFORM_FULL = 'Europe_West';

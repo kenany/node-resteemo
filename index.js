@@ -23,7 +23,7 @@ var PLATFORMS = [
  *   `platform`.
  */
 var normalizePlatform = function(platform, cb) {
-  if (_.size(platform) > 3) {
+  if (platform.length > 3) {
     var validPlatform = _.filter(PLATFORMS, {'full': platform});
     if (!_.isEmpty(validPlatform)) {
       platform = _.where(PLATFORMS, {'full': platform})[0].short;
