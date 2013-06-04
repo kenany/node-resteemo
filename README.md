@@ -97,6 +97,10 @@ shorthand version.
     <td>Brasil</td>
   </tr>
   <tr>
+    <td>ru</td>
+    <td>Russia</td>
+  </tr>
+  <tr>
     <td>euw</td>
     <td>Europe_West</td>
   </tr>
@@ -105,12 +109,16 @@ shorthand version.
     <td>Europe_East</td>
   </tr>
   <tr>
-    <td>ru</td>
-    <td>Russia</td>
-  </tr>
-  <tr>
     <td>tr</td>
     <td>Turkey</td>
+  </tr>
+  <tr>
+    <td>las</td>
+    <td>Latin_America_South</td>
+  </tr>
+  <tr>
+    <td>lan</td>
+    <td>Latin_America_North</td>
   </tr>
 </table>
 

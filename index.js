@@ -6,10 +6,12 @@ var ENDPOINT = 'http://api.captainteemo.com';
 var PLATFORMS = [
   {'short': 'na', 'full': 'North_America'},
   {'short': 'br', 'full': 'Brasil'},
+  {'short': 'ru', 'full': 'Russia'},
   {'short': 'euw', 'full': 'Europe_West'},
   {'short': 'eun', 'full': 'Europe_East'},
-  {'short': 'ru', 'full': 'Russia'},
-  {'short': 'tr', 'full': 'Turkey'}
+  {'short': 'tr', 'full': 'Turkey'},
+  {'short': 'las', 'full': 'Latin_America_South'},
+  {'short': 'lan', 'full': 'Latin_America_North'}
 ];
 
 /**
