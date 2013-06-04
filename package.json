@@ -4,7 +4,6 @@
   "description": "RESTeemo API wrapper in Node.",
   "keywords": [
     "api",
-    "rest",
     "league-of-legends"
   ],
   "homepage": "https://github.com/KenanY/node-resteemo",
