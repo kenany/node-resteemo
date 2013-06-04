@@ -5,6 +5,8 @@
 
 RESTeemo API wrapper for Node. Powered by Quickfind.
 
+![captain teemo on duty](https://a248.e.akamai.net/camo.github.com/32fb5a8ead7c5cdff5b8003b84b0a7189a05d67c/687474703a2f2f692e696d6775722e636f6d2f654964593746612e706e67)
+
 ## Installation
 
 ``` bash
