@@ -9,6 +9,8 @@ var PLATFORMS = [
   {'short': 'euw', 'full': 'Europe_West'},
   {'short': 'eun', 'full': 'Europe_East'},
   {'short': 'ru', 'full': 'Russia'},
+  {'short': 'las', 'full': 'Latin_America_South'},
+  {'short': 'lan', 'full': 'Latin_America_North'},
   {'short': 'tr', 'full': 'Turkey'}
 ];
 
