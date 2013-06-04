@@ -127,3 +127,5 @@ shorthand version.
 ### 1.2.1
 
 - Support Latin America platforms
+
+View previous releases [here](https://github.com/KenanY/node-resteemo/wiki/Changelog).
