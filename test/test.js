@@ -1,16 +1,19 @@
 var chai = require('chai');
 var should = chai.should();
+var nock = require('nock');
+var scout = nock('http://api.captainteemo.com');
 
 var resteemo = require('../');
-var scout = require('./mock.js');
-var c = require('./constants.js');
+
+var TEST_SUMMONER = 'guardsmanbob';
+var TEST_PLATFORM = 'euw';
+var TEST_PLATFORM_FULL = 'Europe_West';
+var PLAYER_PATH = '/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER;
+var DATA_FOLDER = __dirname + '/data/';
 
 describe('node-resteemo', function() {
   before(function() {
-    // A nice yordle who provides a referer string
     this.teemo = resteemo('node-resteemo test suite');
-
-    // An evil yordle who wants to abuse the API
     this.veigar = resteemo;
   });
   after(function() {
@@ -32,7 +35,11 @@ describe('node-resteemo', function() {
 
     describe('create', function() {
       before(function(done) {
-        this.teemo.player.create(c.TEST_PLATFORM, c.TEST_SUMMONER, function(err, profile) {
+        scout
+          .get(PLAYER_PATH)
+          .replyWithFile(200, DATA_FOLDER + 'profile.json');
+
+        this.teemo.player.create(TEST_PLATFORM, TEST_SUMMONER, function(err, profile) {
           if (err) return done(err);
           this.profile = profile;
           done();
@@ -61,19 +68,31 @@ describe('node-resteemo', function() {
         profile.icon.should.be.a('number');
       });
       it('should work with full platform names', function(done) {
-        this.teemo.player.create(c.TEST_PLATFORM_FULL, c.TEST_SUMMONER, function(err, ignored) {
+        scout
+          .get(PLAYER_PATH)
+          .replyWithFile(200, DATA_FOLDER + 'profile.json');
+
+        this.teemo.player.create(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
           should.not.exist(err);
           done();
         });
       });
       it('should return error if api fails', function(done) {
-        this.teemo.player.create(c.TEST_PLATFORM, 'guardsmanbo', function(err, noProfile) {
+        scout
+          .get('/player/' + TEST_PLATFORM + '/guardsmanbo')
+          .replyWithFile(503, DATA_FOLDER + 'error-profile.json');
+
+        this.teemo.player.create(TEST_PLATFORM, 'guardsmanbo', function(err, noProfile) {
           should.not.exist(noProfile);
           done();
         });
       });
       it('should return error if json cannot be parsed', function(done) {
-        this.teemo.player.create(c.TEST_PLATFORM, 'fakejson', function(err, noProfile) {
+        scout
+          .get('/player/' + TEST_PLATFORM + '/fakejson')
+          .replyWithFile(200, DATA_FOLDER + 'error-json.json');
+
+        this.teemo.player.create(TEST_PLATFORM, 'fakejson', function(err, noProfile) {
           err.should.be.an('object');
           should.not.exist(noProfile);
           done();
@@ -83,7 +102,11 @@ describe('node-resteemo', function() {
 
     describe('recentGames', function() {
       before(function(done) {
-        this.teemo.player.recentGames(c.TEST_PLATFORM, c.TEST_SUMMONER, function(err, games) {
+        scout
+          .get(PLAYER_PATH + '/recent_games')
+          .replyWithFile(200, DATA_FOLDER + 'recent_games.json');
+
+        this.teemo.player.recentGames(TEST_PLATFORM, TEST_SUMMONER, function(err, games) {
           if (err) return done(err);
           this.games = games;
           done();
@@ -97,14 +120,22 @@ describe('node-resteemo', function() {
         games.should.be.an('array');
       });
       it('should work with full platform names', function(done) {
-        this.teemo.player.recentGames(c.TEST_PLATFORM_FULL, c.TEST_SUMMONER, function(err, ignored) {
+        scout
+          .get(PLAYER_PATH + '/recent_games')
+          .replyWithFile(200, DATA_FOLDER + 'recent_games.json');
+
+        this.teemo.player.recentGames(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
           should.not.exist(err);
           profile.should.be.an('object');
           done();
         });
       });
       it('should return error if json cannot be parsed', function(done) {
-        this.teemo.player.recentGames(c.TEST_PLATFORM, 'fakejson', function(err, noProfile) {
+        scout
+          .get('/player/' + TEST_PLATFORM + '/fakejson/recent_games')
+          .replyWithFile(200, DATA_FOLDER + 'error-json.json');
+
+        this.teemo.player.recentGames(TEST_PLATFORM, 'fakejson', function(err, noProfile) {
           err.should.be.an('object');
           should.not.exist(noProfile);
           done();
@@ -114,7 +145,11 @@ describe('node-resteemo', function() {
 
     describe('influencePoints', function() {
       before(function(done) {
-        this.teemo.player.influencePoints(c.TEST_PLATFORM, c.TEST_SUMMONER, function(err, points) {
+        scout
+          .get(PLAYER_PATH + '/influence_points')
+          .replyWithFile(200, DATA_FOLDER + 'influence_points.json');
+
+        this.teemo.player.influencePoints(TEST_PLATFORM, TEST_SUMMONER, function(err, points) {
           if (err) return done(err);
           this.points = points;
           done();
@@ -128,14 +163,22 @@ describe('node-resteemo', function() {
         points.should.be.a('number');
       });
       it('should work with full platform names', function(done) {
-        this.teemo.player.influencePoints(c.TEST_PLATFORM_FULL, c.TEST_SUMMONER, function(err, ignored) {
+        scout
+          .get(PLAYER_PATH + '/influence_points')
+          .replyWithFile(200, DATA_FOLDER + 'influence_points.json');
+
+        this.teemo.player.influencePoints(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
           should.not.exist(err);
           profile.should.be.an('object');
           done();
         });
       });
       it('should return error if json cannot be parsed', function(done) {
-        this.teemo.player.influencePoints(c.TEST_PLATFORM, 'fakejson', function(err, noProfile) {
+        scout
+          .get('/player/' + TEST_PLATFORM + '/fakejson/influence_points')
+          .replyWithFile(200, DATA_FOLDER + 'error-json.json');
+
+        this.teemo.player.influencePoints(TEST_PLATFORM, 'fakejson', function(err, noProfile) {
           err.should.be.an('object');
           should.not.exist(noProfile);
           done();
