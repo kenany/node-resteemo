@@ -1,5 +1,6 @@
 var chai = require('chai');
 var should = chai.should();
+
 var nock = require('nock');
 var scout = nock('http://api.captainteemo.com');
 
@@ -56,18 +57,6 @@ describe('node-resteemo', function() {
       it('should return an object', function() {
         profile.should.be.an('object');
       });
-      it('should return profile IDs as numbers', function() {
-        profile.summoner.id.should.be.a('number');
-        profile.account.id.should.be.a('number');
-      });
-      it('should return names as strings', function() {
-        profile.name.should.be.a('string');
-        profile.internalName.should.be.a('string');
-      });
-      it('should return level and icon as numbers', function() {
-        profile.level.should.be.a('number');
-        profile.icon.should.be.a('number');
-      });
       it('should work with full platform names', function(done) {
         scout
           .get(PLAYER_PATH)
@@ -75,6 +64,7 @@ describe('node-resteemo', function() {
 
         this.teemo.player.create(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
           should.not.exist(err);
+          should.exist(ignored);
           done();
         });
       });
@@ -84,6 +74,7 @@ describe('node-resteemo', function() {
           .replyWithFile(503, DATA_FOLDER + 'error-profile.json');
 
         this.teemo.player.create(TEST_PLATFORM, 'guardsmanbo', function(err, noProfile) {
+          err.should.be.an('object');
           should.not.exist(noProfile);
           done();
         });
@@ -117,8 +108,11 @@ describe('node-resteemo', function() {
         this.games = null;
       });
 
-      it('should return recent games', function() {
-        games.should.be.an('array');
+      it('should be a function', function() {
+        this.teemo.player.recentGames.should.be.a('function');
+      });
+      it('should return an object', function() {
+        games.should.be.an('object');
       });
       it('should work with full platform names', function(done) {
         scout
@@ -160,8 +154,11 @@ describe('node-resteemo', function() {
         this.points = null;
       });
 
-      it('should return influence points', function() {
-        points.should.be.a('number');
+      it('should be a function', function() {
+        this.teemo.player.influencePoints.should.be.a('function');
+      });
+      it('should return an object', function() {
+        points.should.be.an('object');
       });
       it('should work with full platform names', function(done) {
         scout

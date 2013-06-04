@@ -33,32 +33,36 @@ teemo.player.create('euw', 'guardsmanbob', function(err, profile) {
 
   console.log(profile);
   // => {
-  // =>   summoner: {
-  // =>     id: 20820067
+  // =>   "_": {
+  // =>     "APP_ID": null
   // =>   },
-  // =>   account: {
-  // =>     id: 24132405
-  // =>   },
-  // =>   name: 'Guardsman Bob',
-  // =>   internalName: 'guardsmanbob',
-  // =>   level: 30,
-  // =>   icon: 30
+  // =>   "success": true,
+  // =>   "shard": "Europe_West:NGUxZmQyNzU5MDY0NGZmNThlODE4YmZkODc5OTc3OWIyNzVmMzQ0Nw",
+  // =>   "data": {
+  // =>     "accountId": 24132405,
+  // =>     "summonerId": 20820067,
+  // =>     "name": "Guardsman Bob",
+  // =>     "icon": 30,
+  // =>     "internalName": "guardsmanbob",
+  // =>     "level": 30
+  // =>   }
   // => }
 });
 ```
 
 #### `teemo.player.recentGames(platform, summoner, callback)`
 
-> **Not ready for use**
-
-Returns an Array of the last 10 matches (order is random) for String `summoner`
-on String `platform`.
+Returns an Object which contains the last 10 matches (order is random) for
+String `summoner` on String `platform`.
 
 ``` javascript
 teemo.player.recentGames('euw', 'guardsmanbob', function(err, games) {
   if (err) throw err;
 
-  // Do stuff with Array `games`.
+  console.log(games);
+  // => {
+  // =>   ...
+  // => }
 }));
 ```
 
@@ -72,7 +76,22 @@ teemo.player.influencePoints('euw', 'guardsmanbob', function(err, points) {
   if (err) throw err;
 
   console.log(points);
-  // => 596797
+  // => {
+  // =>   "_": {
+  // =>     "APP_ID": null
+  // =>   },
+  // =>   "success": true,
+  // =>   "shard": "Europe_West:MjIwN2MxYmJmMzMwZWM2NTI3Y2U5MmZlNmVhNWZjYTk1Mzc1NWZjNQ",
+  // =>   "player": {
+  // =>     "accountId": 24132405,
+  // =>     "summonerId": 20820067,
+  // =>     "name": "Guardsman Bob",
+  // =>     "icon": 30,
+  // =>     "internalName": "guardsmanbob",
+  // =>     "level": 30
+  // =>   },
+  // =>   "data": 596797
+  // => }
 }));
 ```
 

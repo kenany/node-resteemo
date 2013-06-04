@@ -36,12 +36,11 @@ var normalizePlatform = function(platform, cb) {
 };
 
 /**
- * Parse JSON data from a request and refine said data.
+ * Parse JSON data from a request.
  *
  * @param {Object} req The request instance to handle.
  * @param {Function} cb The callback, which is given two arguments:
- *   `(err, gift)`, where `gift` is the refined Object from the response that
- *   `req` gave.
+ *   `(err, response)`, where `response` is a JSON Object from `req`.
  */
 function responseHandler(req, cb) {
   req.on('response', function(res) {
@@ -64,33 +63,12 @@ function responseHandler(req, cb) {
         return;
       }
 
-      // Construct the final object.
-      var info = response.data;
-      var gift;
       if (_.contains(res.request.uri.path, 'recent_games')) {
-        if (!info._success) {
+        if (!response.data._success) {
           cb(new Error('node-resteemo - api failed to return recent games'), null);
         }
-        gift = info.gameStatistics.array;
       }
-      else if (_.contains(res.request.uri.path, 'influence_points')) {
-        gift = info;
-      }
-      else {
-        gift = {
-          summoner: {
-            id: info.summonerId
-          },
-          account: {
-            id: info.accountId
-          },
-          name: info.name,
-          internalName: info.internalName,
-          level: info.level,
-          icon: info.icon
-        };
-      }
-      cb(null, gift);
+      cb(null, response);
     });
   });
 }
