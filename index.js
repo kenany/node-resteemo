@@ -14,14 +14,24 @@ var PLATFORMS = [
 ];
 
 /**
- * Converts a full platform string to its shorthand version.
+ * Create an error by prepending a string with 'node-resteemo - '.
+ *
+ * @param {String} value The error message.
+ * @return {Error}
+ */
+var brandError = function(value) {
+  return new Error('node-resteemo - ' + value);
+};
+
+/**
+ * Converts a full platform string to its shorthand equivalent.
  *
  * @param {String} platform The platform to shorten.
- * @param {Function} cb The callback, which is given two arguments:
- *   `(err, shortPlatform)`, where `shortPlatform` is the shorthand version of
- *   `platform`.
+ * @param {Function} callback The callback, which is given two arguments:
+ *   `(err, shortPlatform)`, where `shortPlatform` is the shorthand equivalent
+ *   of `platform`.
  */
-var normalizePlatform = function(platform, cb) {
+var normalizePlatform = function(platform, callback) {
   if (platform.length > 3) {
     var validPlatform = _.filter(PLATFORMS, {'full': platform});
     if (!_.isEmpty(validPlatform)) {
@@ -29,19 +39,21 @@ var normalizePlatform = function(platform, cb) {
     }
   }
   else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
-    cb(new Error('node-resteemo - invalid platform'), null);
+    var error = brandError('invalid platform');
+    return callback(error, null);
   }
-  cb(platform);
+
+  callback(null, platform);
 };
 
 /**
  * Parse JSON data from a request.
  *
  * @param {Object} req The request instance to handle.
- * @param {Function} cb The callback, which is given two arguments:
+ * @param {Function} callback The callback, which is given two arguments:
  *   `(err, response)`, where `response` is a JSON Object from `req`.
  */
-function responseHandler(req, cb) {
+function responseHandler(req, callback) {
   req.on('response', function(res) {
     var response = '';
     res.setEncoding('utf8');
@@ -53,21 +65,23 @@ function responseHandler(req, cb) {
         response = JSON.parse(response);
       }
       catch(e) {
-        cb(new Error('node-resteemo - invalid json response'), null);
-        return;
+        var error = brandError('invalid json response');
+        return callback(error, null);
       }
 
       if (!response.success) {
-        cb(new Error('node-resteemo - api failed'), null);
-        return;
+        var error = brandError('api failed');
+        return callback(error, null);
       }
 
       if (_.contains(res.request.uri.path, 'recent_games')) {
         if (!response.data._success) {
-          cb(new Error('node-resteemo - api failed to return recent games'), null);
+          var error = brandError('api failed to return recent games');
+          return callback(error, null);
         }
       }
-      cb(null, response);
+
+      callback(null, response);
     });
   });
 }
@@ -80,7 +94,8 @@ function responseHandler(req, cb) {
  */
 module.exports = function(refererString) {
   if (!_.isString(refererString)) {
-    throw new Error('node-resteemo - `refererString` not defined');
+    var error = brandError('`refererString` not defined');
+    throw error;
   }
 
   /**
@@ -88,11 +103,12 @@ module.exports = function(refererString) {
    *
    * @param {String} method The HTTP verb.
    * @param {String} path The path to query from the API endpoint.
-   * @param {Function} cb The callback, which is passed to `responseHandler`.
+   * @param {Function} callback The callback, which is passed to `responseHandler`.
    */
   function prepareRequest(method, path, cb) {
     if (!_.isFunction(cb)) {
-      throw new Error('node-resteemo - missing callback');
+      var error = brandError('missing callback');
+      throw error;
     }
 
     var headers = {
@@ -124,17 +140,17 @@ module.exports = function(refererString) {
   return {
     player: {
       create: function(platform, summoner, cb) {
-        normalizePlatform(platform, function(shortPlatform) {
+        normalizePlatform(platform, function(error, shortPlatform) {
           get('/player/' + shortPlatform + '/' + summoner, cb);
         });
       },
       recentGames: function(platform, summoner, cb) {
-        normalizePlatform(platform, function(shortPlatform) {
+        normalizePlatform(platform, function(error, shortPlatform) {
           get('/player/' + shortPlatform + '/' + summoner + '/recent_games', cb);
         });
       },
       influencePoints: function(platform, summoner, cb) {
-        normalizePlatform(platform, function(shortPlatform) {
+        normalizePlatform(platform, function(error, shortPlatform) {
           get('/player/' + shortPlatform + '/' + summoner + '/influence_points', cb);
         });
       }
