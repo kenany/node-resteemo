@@ -14,8 +14,9 @@ var PLATFORMS = [
 ];
 
 /**
- * Create an error by prepending a string with 'node-resteemo - '.
+ * Create an error whose message begins with 'node-resteemo - '.
  *
+ * @private
  * @param {String} value The error message.
  * @return {Error}
  */
@@ -26,6 +27,7 @@ var brandError = function(value) {
 /**
  * Converts a full platform string to its shorthand equivalent.
  *
+ * @private
  * @param {String} platform The platform to shorten.
  * @param {Function} callback The callback, which is given two arguments:
  *   `(err, shortPlatform)`, where `shortPlatform` is the shorthand equivalent
@@ -49,6 +51,7 @@ var normalizePlatform = function(platform, callback) {
 /**
  * Parse JSON data from a request.
  *
+ * @private
  * @param {Object} req The request instance to handle.
  * @param {Function} callback The callback, which is given two arguments:
  *   `(err, response)`, where `response` is a JSON Object from `req`.
@@ -101,6 +104,7 @@ module.exports = function(refererString) {
   /**
    * Contructs the headers and options for the API request.
    *
+   * @private
    * @param {String} method The HTTP verb.
    * @param {String} path The path to query from the API endpoint.
    * @param {Function} callback The callback, which is passed to
@@ -131,6 +135,7 @@ module.exports = function(refererString) {
   /**
    * Begins the preparation for a GET request.
    *
+   * @private
    * @param {String} path The path to query from the API endpoint.
    * @param {Function} callback The callback, which is passed to
    *   `prepareRequest`.
