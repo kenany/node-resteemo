@@ -1,4 +1,3 @@
-var json3 = require('json3');
 var _ = require('lodash');
 var request = require('request');
 
@@ -51,7 +50,7 @@ function responseHandler(req, cb) {
     });
     res.on('end', function() {
       try {
-        response = json3.parse(response);
+        response = JSON.parse(response);
       }
       catch(e) {
         cb(new Error('node-resteemo - invalid json response'), null);
