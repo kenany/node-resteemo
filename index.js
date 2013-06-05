@@ -105,8 +105,8 @@ module.exports = function(refererString) {
    * @param {String} path The path to query from the API endpoint.
    * @param {Function} callback The callback, which is passed to `responseHandler`.
    */
-  function prepareRequest(method, path, cb) {
-    if (!_.isFunction(cb)) {
+  function prepareRequest(method, path, callback) {
+    if (!_.isFunction(callback)) {
       var error = brandError('missing callback');
       throw error;
     }
@@ -123,7 +123,7 @@ module.exports = function(refererString) {
     };
 
     var req = request(requestOptions);
-    responseHandler(req, cb);
+    responseHandler(req, callback);
     req.end();
   }
 
@@ -131,27 +131,27 @@ module.exports = function(refererString) {
    * Begins the preparation for a GET request.
    *
    * @param {String} path The path to query from the API endpoint.
-   * @param {Function} cb The callback, which is passed to `prepareRequest`.
+   * @param {Function} callback The callback, which is passed to `prepareRequest`.
    */
-  var get = function(path, cb) {
-    prepareRequest('GET', path, cb);
+  var get = function(path, callback) {
+    prepareRequest('GET', path, callback);
   };
 
   return {
     player: {
-      create: function(platform, summoner, cb) {
+      create: function(platform, summoner, callback) {
         normalizePlatform(platform, function(error, shortPlatform) {
-          get('/player/' + shortPlatform + '/' + summoner, cb);
+          get('/player/' + shortPlatform + '/' + summoner, callback);
         });
       },
-      recentGames: function(platform, summoner, cb) {
+      recentGames: function(platform, summoner, callback) {
         normalizePlatform(platform, function(error, shortPlatform) {
-          get('/player/' + shortPlatform + '/' + summoner + '/recent_games', cb);
+          get('/player/' + shortPlatform + '/' + summoner + '/recent_games', callback);
         });
       },
-      influencePoints: function(platform, summoner, cb) {
+      influencePoints: function(platform, summoner, callback) {
         normalizePlatform(platform, function(error, shortPlatform) {
-          get('/player/' + shortPlatform + '/' + summoner + '/influence_points', cb);
+          get('/player/' + shortPlatform + '/' + summoner + '/influence_points', callback);
         });
       }
     }
