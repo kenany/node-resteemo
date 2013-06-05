@@ -103,7 +103,8 @@ module.exports = function(refererString) {
    *
    * @param {String} method The HTTP verb.
    * @param {String} path The path to query from the API endpoint.
-   * @param {Function} callback The callback, which is passed to `responseHandler`.
+   * @param {Function} callback The callback, which is passed to
+   *   `responseHandler`.
    */
   function prepareRequest(method, path, callback) {
     if (!_.isFunction(callback)) {
@@ -131,7 +132,8 @@ module.exports = function(refererString) {
    * Begins the preparation for a GET request.
    *
    * @param {String} path The path to query from the API endpoint.
-   * @param {Function} callback The callback, which is passed to `prepareRequest`.
+   * @param {Function} callback The callback, which is passed to
+   *   `prepareRequest`.
    */
   var get = function(path, callback) {
     prepareRequest('GET', path, callback);
