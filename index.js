@@ -42,7 +42,7 @@ function normalizePlatform(platform, callback) {
   }
   else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
     var error = brandError('invalid platform');
-    return callback(error, null);
+    return callback(error);
   }
 
   callback(null, platform);
@@ -69,18 +69,18 @@ function responseHandler(req, callback) {
       }
       catch(e) {
         var error = brandError('invalid json response');
-        return callback(error, null);
+        return callback(error);
       }
 
       if (!response.success) {
         var error = brandError('api failed');
-        return callback(error, null);
+        return callback(error);
       }
 
       if (_.contains(res.request.uri.path, 'recent_games')) {
         if (!response.data._success) {
           var error = brandError('api failed to return recent games');
-          return callback(error, null);
+          return callback(error);
         }
       }
 
