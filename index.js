@@ -20,9 +20,9 @@ var PLATFORMS = [
  * @param {String} value The error message.
  * @return {Error}
  */
-var brandError = function(value) {
+function brandError(value) {
   return new Error('node-resteemo - ' + value);
-};
+}
 
 /**
  * Converts a full platform string to its shorthand equivalent.
@@ -33,7 +33,7 @@ var brandError = function(value) {
  *   `(err, shortPlatform)`, where `shortPlatform` is the shorthand equivalent
  *   of `platform`.
  */
-var normalizePlatform = function(platform, callback) {
+function normalizePlatform(platform, callback) {
   if (platform.length > 3) {
     var validPlatform = _.filter(PLATFORMS, {'full': platform});
     if (!_.isEmpty(validPlatform)) {
@@ -46,7 +46,7 @@ var normalizePlatform = function(platform, callback) {
   }
 
   callback(null, platform);
-};
+}
 
 /**
  * Parse JSON data from a request.
@@ -140,9 +140,9 @@ module.exports = function(refererString) {
    * @param {Function} callback The callback, which is passed to
    *   `prepareRequest`.
    */
-  var get = function(path, callback) {
+  function get(path, callback) {
     prepareRequest('GET', path, callback);
-  };
+  }
 
   return {
     player: {
