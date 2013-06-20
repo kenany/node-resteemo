@@ -1,7 +1,7 @@
 {
   "name": "resteemo",
   "version": "1.2.1",
-  "description": "RESTeemo API wrapper in Node.",
+  "description": "RESTeemo API wrapper.",
   "keywords": [
     "api",
     "league-of-legends"
@@ -10,10 +10,11 @@
   "bugs": {
     "url": "https://github.com/KenanY/node-resteemo/issues"
   },
+  "license": "MIT",
   "author": {
     "name": "Kenan Yildirim",
     "email": "kenan@kenany.me",
-    "web": "http://kenany.me/"
+    "url": "http://kenany.me/"
   },
   "main": "./index.js",
   "directories": {
