@@ -45,7 +45,7 @@ function normalizePlatform(platform, callback) {
   }
 
   var error = brandError('invalid platform');
-  callback(error, null);
+  callback(error);
 }
 
 /**
