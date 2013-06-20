@@ -34,6 +34,8 @@ function brandError(value) {
  *   of `platform`.
  */
 function normalizePlatform(platform, callback) {
+  var error = null;
+
   if (platform.length > 3) {
     _.forEach(PLATFORMS, function(value, index) {
       if (value['full'] === platform) {
@@ -43,11 +45,10 @@ function normalizePlatform(platform, callback) {
     });
   }
   else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
-    var error = brandError('invalid platform');
-    return callback(error);
+    error = brandError('invalid platform');
   }
 
-  callback(null, platform);
+  callback(error, platform);
 }
 
 /**
