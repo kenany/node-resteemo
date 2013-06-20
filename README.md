@@ -22,80 +22,17 @@ user agent of requests. node-resteemo will not fill in these details for you.
 var teemo = require('resteemo')('string with contact info');
 ```
 
+All functions are asynchronous. The callback is always executed as
+`callback(error, response)`, where `response` is an Object unless there was an
+error. Refer to RESTeemo's API docs for what each `response` looks like.
+
 ### Player requests
 
-#### `teemo.player(platform, summoner, callback)`
+Looks up information for String `summoner` on String `platform`.
 
-Returns an Object `profile` containing ID-based data for String `summoner` on
-String `platform`. Account and summoner IDs are not unique across platforms.
-
-``` javascript
-teemo.player('euw', 'guardsmanbob', function(err, profile) {
-  if (err) throw err;
-
-  console.log(profile);
-  // => {
-  // =>   "_": {
-  // =>     "APP_ID": null
-  // =>   },
-  // =>   "success": true,
-  // =>   "shard": "Europe_West:NGUxZmQyNzU5MDY0NGZmNThlODE4YmZkODc5OTc3OWIyNzVmMzQ0Nw",
-  // =>   "data": {
-  // =>     "accountId": 24132405,
-  // =>     "summonerId": 20820067,
-  // =>     "name": "Guardsman Bob",
-  // =>     "icon": 30,
-  // =>     "internalName": "guardsmanbob",
-  // =>     "level": 30
-  // =>   }
-  // => }
-});
-```
-
-#### `teemo.player.recentGames(platform, summoner, callback)`
-
-Returns an Object which contains the last 10 matches (order is random) for
-String `summoner` on String `platform`.
-
-``` javascript
-teemo.player.recentGames('euw', 'guardsmanbob', function(err, games) {
-  if (err) throw err;
-
-  console.log(games);
-  // => {
-  // =>   ...
-  // => }
-}));
-```
-
-#### `teemo.player.influencePoints(platform, summoner, callback)`
-
-Returns lifetime influence point gains for String `summoner` on String
-`platform`.
-
-``` javascript
-teemo.player.influencePoints('euw', 'guardsmanbob', function(err, points) {
-  if (err) throw err;
-
-  console.log(points);
-  // => {
-  // =>   "_": {
-  // =>     "APP_ID": null
-  // =>   },
-  // =>   "success": true,
-  // =>   "shard": "Europe_West:MjIwN2MxYmJmMzMwZWM2NTI3Y2U5MmZlNmVhNWZjYTk1Mzc1NWZjNQ",
-  // =>   "player": {
-  // =>     "accountId": 24132405,
-  // =>     "summonerId": 20820067,
-  // =>     "name": "Guardsman Bob",
-  // =>     "icon": 30,
-  // =>     "internalName": "guardsmanbob",
-  // =>     "level": 30
-  // =>   },
-  // =>   "data": 596797
-  // => }
-}));
-```
+- `teemo.player(platform, summoner, callback)`
+- `teemo.player.recentGames(platform, summoner, callback)`
+- `teemo.player.influencePoints(platform, summoner, callback)`
 
 ## Supported platforms
 
