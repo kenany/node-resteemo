@@ -142,34 +142,41 @@ module.exports = function(refererString) {
     prepareRequest('GET', path, callback);
   }
 
+  /**
+   * Sets up a player request.
+   *
+   * @private
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {String} path
+   * @param {Function} callback
+   */
+  function playerRequest(platform, summoner, path, callback) {
+    var shortPlatform = normalizePlatform(platform);
+    if (_.isNull(shortPlatform)) {
+      var error = brandError('invalid platform');
+      return callback(error);
+    }
+
+    if (_.isNull(path)) {
+      path = '';
+    } else {
+      path = '/' + path;
+    }
+
+    get('/player/' + shortPlatform + '/' + summoner + path, callback);
+  }
+
   return {
     player: {
       create: function(platform, summoner, callback) {
-        var shortPlatform = normalizePlatform(platform);
-        if (_.isNull(shortPlatform)) {
-          var error = brandError('invalid platform');
-          return callback(error)
-        }
-
-        get('/player/' + shortPlatform + '/' + summoner, callback);
+        playerRequest(platform, summoner, null, callback);
       },
       recentGames: function(platform, summoner, callback) {
-        var shortPlatform = normalizePlatform(platform);
-        if (_.isNull(shortPlatform)) {
-          var error = brandError('invalid platform');
-          return callback(error)
-        }
-
-        get('/player/' + shortPlatform + '/' + summoner + '/recent_games', callback);
+        playerRequest(platform, summoner, 'recent_games', callback);
       },
       influencePoints: function(platform, summoner, callback) {
-        var shortPlatform = normalizePlatform(platform);
-        if (_.isNull(shortPlatform)) {
-          var error = brandError('invalid platform');
-          return callback(error)
-        }
-
-        get('/player/' + shortPlatform + '/' + summoner + '/influence_points', callback);
+        playerRequest(platform, summoner, 'influence_points', callback);
       }
     }
   };
