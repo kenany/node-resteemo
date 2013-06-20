@@ -168,12 +168,42 @@ module.exports = function(refererString) {
   }
 
   var teemo = {};
+
+  /**
+   * HTTP GET /player/{platform}/{summoner}
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, profile)` where
+   *   `profile` is the API response as an Object.
+   */
   teemo.player = function(platform, summoner, callback) {
     playerRequest(platform, summoner, null, callback);
   };
+
+  /**
+   * HTTP GET /player/{platform}/{summoner}/recent_games
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, games)` where `games`
+   *   is the API response as an Object.
+   */
   teemo.player.recentGames = function(platform, summoner, callback) {
     playerRequest(platform, summoner, 'recent_games', callback);
   };
+
+  /**
+   * HTTP GET /player/{platform}/{summoner}/influence_points
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, points)` where `points`
+   *   is the API response as an Object.
+   */
   teemo.player.influencePoints = function(platform, summoner, callback) {
     playerRequest(platform, summoner, 'influence_points', callback);
   };
