@@ -35,20 +35,20 @@ function brandError(value) {
  */
 function normalizePlatform(platform, callback) {
   var error = null;
+  var matchFromFullPlatform = _.find(PLATFORMS, {'full': platform});
+  var matchFromShortPlatform = _.find(PLATFORMS, {'short': platform});
 
-  if (platform.length > 3) {
-    _.forEach(PLATFORMS, function(value, index) {
-      if (value['full'] === platform) {
-        platform = value['short'];
-        return true;
-      }
-    });
-  }
-  else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
-    error = brandError('invalid platform');
+  if (!_.isUndefined(matchFromFullPlatform)) {
+    return callback(error, matchFromFullPlatform['short']);
   }
 
-  callback(error, platform);
+  if (!_.isUndefined(matchFromShortPlatform)) {
+    return callback(error, platform);
+  }
+
+  error = brandError('invalid platform');
+
+  callback(error, null);
 }
 
 /**
