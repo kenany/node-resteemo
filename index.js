@@ -35,10 +35,12 @@ function brandError(value) {
  */
 function normalizePlatform(platform, callback) {
   if (platform.length > 3) {
-    var validPlatform = _.filter(PLATFORMS, {'full': platform});
-    if (!_.isEmpty(validPlatform)) {
-      platform = _.where(PLATFORMS, {'full': platform})[0].short;
-    }
+    _.forEach(PLATFORMS, function(value, index) {
+      if (value['full'] === platform) {
+        platform = value['short'];
+        return true;
+      }
+    });
   }
   else if (_.isEmpty(_.filter(PLATFORMS, {'short': platform}))) {
     var error = brandError('invalid platform');
