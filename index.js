@@ -34,20 +34,17 @@ function brandError(value) {
  *   of `platform`.
  */
 function normalizePlatform(platform, callback) {
-  var error = null;
-
   var matchFromFullPlatform = _.find(PLATFORMS, {'full': platform});
   if (!_.isUndefined(matchFromFullPlatform)) {
-    return callback(error, matchFromFullPlatform['short']);
+    return callback(null, matchFromFullPlatform['short']);
   }
 
   var matchFromShortPlatform = _.find(PLATFORMS, {'short': platform});
   if (!_.isUndefined(matchFromShortPlatform)) {
-    return callback(error, platform);
+    return callback(null, platform);
   }
 
-  error = brandError('invalid platform');
-
+  var error = brandError('invalid platform');
   callback(error, null);
 }
 
