@@ -24,13 +24,13 @@ var teemo = require('resteemo')('string with contact info');
 
 ### Player requests
 
-#### `teemo.player.create(platform, summoner, callback)`
+#### `teemo.player(platform, summoner, callback)`
 
 Returns an Object `profile` containing ID-based data for String `summoner` on
 String `platform`. Account and summoner IDs are not unique across platforms.
 
 ``` javascript
-teemo.player.create('euw', 'guardsmanbob', function(err, profile) {
+teemo.player('euw', 'guardsmanbob', function(err, profile) {
   if (err) throw err;
 
   console.log(profile);

@@ -167,17 +167,16 @@ module.exports = function(refererString) {
     get('/player/' + shortPlatform + '/' + summoner + path, callback);
   }
 
-  return {
-    player: {
-      create: function(platform, summoner, callback) {
-        playerRequest(platform, summoner, null, callback);
-      },
-      recentGames: function(platform, summoner, callback) {
-        playerRequest(platform, summoner, 'recent_games', callback);
-      },
-      influencePoints: function(platform, summoner, callback) {
-        playerRequest(platform, summoner, 'influence_points', callback);
-      }
-    }
+  var teemo = {};
+  teemo.player = function(platform, summoner, callback) {
+    playerRequest(platform, summoner, null, callback);
   };
+  teemo.player.recentGames = function(platform, summoner, callback) {
+    playerRequest(platform, summoner, 'recent_games', callback);
+  };
+  teemo.player.influencePoints = function(platform, summoner, callback) {
+    playerRequest(platform, summoner, 'influence_points', callback);
+  };
+
+  return teemo;
 };

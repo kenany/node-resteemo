@@ -31,64 +31,57 @@ describe('node-resteemo', function() {
   });
 
   describe('player', function() {
-    it('should return an object', function() {
-      this.teemo.player.should.be.an('object');
+    before(function(done) {
+      scout
+        .get(PLAYER_PATH)
+        .replyWithFile(200, DATA_FOLDER + 'profile.json');
+
+      this.teemo.player(TEST_PLATFORM, TEST_SUMMONER, function(err, profile) {
+        if (err) return done(err);
+        this.profile = profile;
+        done();
+      });
     });
+    after(function() {
+      this.profile = null;
+    });
+    it('should be a function', function() {
+      this.teemo.player.should.be.a('function');
+    });
+    it('should return an object', function() {
+      profile.should.be.an('object');
+    });
+    it('should work with full platform names', function(done) {
+      scout
+        .get(PLAYER_PATH)
+        .replyWithFile(200, DATA_FOLDER + 'profile.json');
 
-    describe('create', function() {
-      before(function(done) {
-        scout
-          .get(PLAYER_PATH)
-          .replyWithFile(200, DATA_FOLDER + 'profile.json');
+      this.teemo.player(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
+        should.not.exist(err);
+        should.exist(ignored);
+        done();
+      });
+    });
+    it('should return error if api fails', function(done) {
+      scout
+        .get('/player/' + TEST_PLATFORM + '/guardsmanbo')
+        .replyWithFile(503, DATA_FOLDER + 'error-profile.json');
 
-        this.teemo.player.create(TEST_PLATFORM, TEST_SUMMONER, function(err, profile) {
-          if (err) return done(err);
-          this.profile = profile;
-          done();
-        });
+      this.teemo.player(TEST_PLATFORM, 'guardsmanbo', function(err, noProfile) {
+        err.should.be.an('object');
+        should.not.exist(noProfile);
+        done();
       });
-      after(function() {
-        this.profile = null;
-      });
+    });
+    it('should return error if json cannot be parsed', function(done) {
+      scout
+        .get('/player/' + TEST_PLATFORM + '/fakejson')
+        .replyWithFile(200, DATA_FOLDER + 'error-json.json');
 
-      it('should be a function', function() {
-        this.teemo.player.create.should.be.a('function');
-      });
-      it('should return an object', function() {
-        profile.should.be.an('object');
-      });
-      it('should work with full platform names', function(done) {
-        scout
-          .get(PLAYER_PATH)
-          .replyWithFile(200, DATA_FOLDER + 'profile.json');
-
-        this.teemo.player.create(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
-          should.not.exist(err);
-          should.exist(ignored);
-          done();
-        });
-      });
-      it('should return error if api fails', function(done) {
-        scout
-          .get('/player/' + TEST_PLATFORM + '/guardsmanbo')
-          .replyWithFile(503, DATA_FOLDER + 'error-profile.json');
-
-        this.teemo.player.create(TEST_PLATFORM, 'guardsmanbo', function(err, noProfile) {
-          err.should.be.an('object');
-          should.not.exist(noProfile);
-          done();
-        });
-      });
-      it('should return error if json cannot be parsed', function(done) {
-        scout
-          .get('/player/' + TEST_PLATFORM + '/fakejson')
-          .replyWithFile(200, DATA_FOLDER + 'error-json.json');
-
-        this.teemo.player.create(TEST_PLATFORM, 'fakejson', function(err, noProfile) {
-          err.should.be.an('object');
-          should.not.exist(noProfile);
-          done();
-        });
+      this.teemo.player(TEST_PLATFORM, 'fakejson', function(err, noProfile) {
+        err.should.be.an('object');
+        should.not.exist(noProfile);
+        done();
       });
     });
 
@@ -121,7 +114,7 @@ describe('node-resteemo', function() {
 
         this.teemo.player.recentGames(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
           should.not.exist(err);
-          profile.should.be.an('object');
+          ignored.should.be.an('object');
           done();
         });
       });
