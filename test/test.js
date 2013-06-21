@@ -151,5 +151,29 @@ describe('node-resteemo', function() {
         runes.should.be.an('object');
       });
     });
+
+    describe('mastery', function() {
+      before(function(done) {
+        scout
+          .get(PLAYER_PATH + '/mastery')
+          .replyWithFile(200, DATA_FOLDER + 'mastery.json');
+
+        teemo.player.mastery(TEST_PLATFORM, TEST_SUMMONER, function(error, pages) {
+          if (error) return done(error);
+          this.pages = pages;
+          done();
+        });
+      });
+      after(function() {
+        this.pages = null;
+      });
+
+      it('should be a function', function() {
+        teemo.player.mastery.should.be.a('function');
+      });
+      it('should return an object', function() {
+        pages.should.be.an('object');
+      });
+    });
   });
 });

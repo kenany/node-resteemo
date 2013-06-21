@@ -83,6 +83,9 @@ function responseHandler(req, callback) {
         case !(_.contains(res.request.uri.path, 'runes')):
           hasSecondSuccess = true;
           break;
+        case !(_.contains(res.request.uri.path, 'mastery')):
+          hasSecondSuccess = true;
+          break;
         default:
           hasSecondSuccess = false;
       }
@@ -221,6 +224,19 @@ module.exports = function(refererString) {
    */
   teemo.player.influencePoints = function(platform, summoner, callback) {
     playerRequest(platform, summoner, 'influence_points', callback);
+  };
+
+  /**
+   * Returns mastery pages for String `summoner` on String `platform`.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, pages)` where `pages`
+   *   is the API response as an Object.
+   */
+  teemo.player.mastery = function(platform, summoner, callback) {
+    playerRequest(platform, summoner, 'mastery', callback);
   };
 
   /**

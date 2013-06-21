@@ -34,6 +34,7 @@ Looks up information for String `summoner` on String `platform`.
 - `teemo.player.recentGames(platform, summoner, callback)`
 - `teemo.player.influencePoints(platform, summoner, callback)`
 - `teemo.player.runes(platform, summoner, callback)`
+- `teemo.player.mastery(platform, summoner, callback)`
 
 ## Supported platforms
 
