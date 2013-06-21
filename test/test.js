@@ -39,6 +39,7 @@ describe('node-resteemo', function() {
     after(function() {
       this.profile = null;
     });
+
     it('should be a function', function() {
       teemo.player.should.be.a('function');
     });
