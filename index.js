@@ -86,6 +86,9 @@ function responseHandler(req, callback) {
         case !(_.contains(res.request.uri.path, 'mastery')):
           hasSecondSuccess = true;
           break;
+        case !(_.contains(res.request.uri.path, 'leagues')):
+          hasSecondSuccess = true;
+          break;
         default:
           hasSecondSuccess = false;
       }
@@ -227,6 +230,19 @@ module.exports = function(refererString) {
   };
 
   /**
+   * Returns runepages for String `summoner` on String `platform`.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, runes)` where `runes`
+   *   is the API response as an Object.
+   */
+  teemo.player.runes = function(platform, summoner, callback) {
+    playerRequest(platform, summoner, 'runes', callback);
+  };
+
+  /**
    * Returns mastery pages for String `summoner` on String `platform`.
    *
    * @public
@@ -240,16 +256,16 @@ module.exports = function(refererString) {
   };
 
   /**
-   * Returns runepages for String `summoner` on String `platform`.
+   * Returns Season 3 Leagues info.
    *
    * @public
    * @param {String} platform
    * @param {String} summoner
-   * @param {Function} callback Used as `callback(error, runes)` where `runes`
-   *   is the API response as an Object.
+   * @param {Function} callback Used as `callback(error, leagues)` where
+   *   `leagues` is the API response as an Object.
    */
-  teemo.player.runes = function(platform, summoner, callback) {
-    playerRequest(platform, summoner, 'runes', callback);
+  teemo.player.leagues = function(platform, summoner, callback) {
+    playerRequest(platform, summoner, 'leagues', callback);
   };
 
   return teemo;

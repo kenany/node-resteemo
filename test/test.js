@@ -175,5 +175,29 @@ describe('node-resteemo', function() {
         pages.should.be.an('object');
       });
     });
+
+    describe('leagues', function() {
+      before(function(done) {
+        scout
+          .get(PLAYER_PATH + '/leagues')
+          .replyWithFile(200, DATA_FOLDER + 'leagues.json');
+
+        teemo.player.leagues(TEST_PLATFORM, TEST_SUMMONER, function(error, leagues) {
+          if (error) return done(error);
+          this.leagues = leagues;
+          done();
+        });
+      });
+      after(function() {
+        this.leagues = null;
+      });
+
+      it('should be a function', function() {
+        teemo.player.leagues.should.be.a('function');
+      });
+      it('should return an object', function() {
+        leagues.should.be.an('object');
+      });
+    });
   });
 });
