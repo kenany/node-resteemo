@@ -5,8 +5,8 @@ var nock = require('nock');
 var scout = nock('http://api.captainteemo.com');
 
 var resteemo = require('../');
+var teemo = resteemo('node-resteemo test suite');
 
-// Constants
 var TEST_SUMMONER = 'guardsmanbob';
 var TEST_PLATFORM = 'euw';
 var TEST_PLATFORM_FULL = 'Europe_West';
@@ -14,20 +14,14 @@ var PLAYER_PATH = '/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER;
 var DATA_FOLDER = __dirname + '/data/';
 
 describe('node-resteemo', function() {
-  before(function() {
-    this.teemo = resteemo('node-resteemo test suite');
-    this.veigar = resteemo;
-  });
-  after(function() {
-    this.teemo = null;
-    this.veigar = null;
-  });
-
   it('should export a function', function() {
     resteemo.should.be.a('function');
   });
+  it('should return an object', function() {
+    teemo.should.be.an('object');
+  });
   it('should throw error if referer string is not provided', function() {
-    this.veigar.should.throw(/refererString/);
+    resteemo.should.throw(/refererString/);
   });
 
   describe('player', function() {
@@ -36,8 +30,8 @@ describe('node-resteemo', function() {
         .get(PLAYER_PATH)
         .replyWithFile(200, DATA_FOLDER + 'profile.json');
 
-      this.teemo.player(TEST_PLATFORM, TEST_SUMMONER, function(err, profile) {
-        if (err) return done(err);
+      teemo.player(TEST_PLATFORM, TEST_SUMMONER, function(error, profile) {
+        if (error) return done(error);
         this.profile = profile;
         done();
       });
@@ -46,7 +40,7 @@ describe('node-resteemo', function() {
       this.profile = null;
     });
     it('should be a function', function() {
-      this.teemo.player.should.be.a('function');
+      teemo.player.should.be.a('function');
     });
     it('should return an object', function() {
       profile.should.be.an('object');
@@ -56,9 +50,9 @@ describe('node-resteemo', function() {
         .get(PLAYER_PATH)
         .replyWithFile(200, DATA_FOLDER + 'profile.json');
 
-      this.teemo.player(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
-        should.not.exist(err);
-        should.exist(ignored);
+      teemo.player(TEST_PLATFORM_FULL, TEST_SUMMONER, function(error, prof) {
+        should.not.exist(error);
+        should.exist(prof);
         done();
       });
     });
@@ -67,9 +61,9 @@ describe('node-resteemo', function() {
         .get('/player/' + TEST_PLATFORM + '/guardsmanbo')
         .replyWithFile(503, DATA_FOLDER + 'error-profile.json');
 
-      this.teemo.player(TEST_PLATFORM, 'guardsmanbo', function(err, noProfile) {
-        err.should.be.an('object');
-        should.not.exist(noProfile);
+      teemo.player(TEST_PLATFORM, 'guardsmanbo', function(error, nothing) {
+        error.should.be.an('object');
+        should.not.exist(nothing);
         done();
       });
     });
@@ -78,9 +72,9 @@ describe('node-resteemo', function() {
         .get('/player/' + TEST_PLATFORM + '/fakejson')
         .replyWithFile(200, DATA_FOLDER + 'error-json.json');
 
-      this.teemo.player(TEST_PLATFORM, 'fakejson', function(err, noProfile) {
-        err.should.be.an('object');
-        should.not.exist(noProfile);
+      teemo.player(TEST_PLATFORM, 'fakejson', function(error, nothing) {
+        should.exist(error);
+        should.not.exist(nothing);
         done();
       });
     });
@@ -91,8 +85,8 @@ describe('node-resteemo', function() {
           .get(PLAYER_PATH + '/recent_games')
           .replyWithFile(200, DATA_FOLDER + 'recent_games.json');
 
-        this.teemo.player.recentGames(TEST_PLATFORM, TEST_SUMMONER, function(err, games) {
-          if (err) return done(err);
+        teemo.player.recentGames(TEST_PLATFORM, TEST_SUMMONER, function(error, games) {
+          if (error) return done(error);
           this.games = games;
           done();
         });
@@ -102,7 +96,7 @@ describe('node-resteemo', function() {
       });
 
       it('should be a function', function() {
-        this.teemo.player.recentGames.should.be.a('function');
+        teemo.player.recentGames.should.be.a('function');
       });
       it('should return an object', function() {
         games.should.be.an('object');
@@ -112,8 +106,8 @@ describe('node-resteemo', function() {
           .get(PLAYER_PATH + '/recent_games')
           .replyWithFile(200, DATA_FOLDER + 'recent_games.json');
 
-        this.teemo.player.recentGames(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
-          should.not.exist(err);
+        teemo.player.recentGames(TEST_PLATFORM_FULL, TEST_SUMMONER, function(error, ignored) {
+          should.not.exist(error);
           ignored.should.be.an('object');
           done();
         });
@@ -123,8 +117,8 @@ describe('node-resteemo', function() {
           .get('/player/' + TEST_PLATFORM + '/fakejson/recent_games')
           .replyWithFile(200, DATA_FOLDER + 'error-json.json');
 
-        this.teemo.player.recentGames(TEST_PLATFORM, 'fakejson', function(err, noProfile) {
-          err.should.be.an('object');
+        teemo.player.recentGames(TEST_PLATFORM, 'fakejson', function(error, noProfile) {
+          should.exist(error);
           should.not.exist(noProfile);
           done();
         });
@@ -137,8 +131,8 @@ describe('node-resteemo', function() {
           .get(PLAYER_PATH + '/influence_points')
           .replyWithFile(200, DATA_FOLDER + 'influence_points.json');
 
-        this.teemo.player.influencePoints(TEST_PLATFORM, TEST_SUMMONER, function(err, points) {
-          if (err) return done(err);
+        teemo.player.influencePoints(TEST_PLATFORM, TEST_SUMMONER, function(error, points) {
+          if (error) return done(error);
           this.points = points;
           done();
         });
@@ -148,7 +142,7 @@ describe('node-resteemo', function() {
       });
 
       it('should be a function', function() {
-        this.teemo.player.influencePoints.should.be.a('function');
+        teemo.player.influencePoints.should.be.a('function');
       });
       it('should return an object', function() {
         points.should.be.an('object');
@@ -158,8 +152,8 @@ describe('node-resteemo', function() {
           .get(PLAYER_PATH + '/influence_points')
           .replyWithFile(200, DATA_FOLDER + 'influence_points.json');
 
-        this.teemo.player.influencePoints(TEST_PLATFORM_FULL, TEST_SUMMONER, function(err, ignored) {
-          should.not.exist(err);
+        teemo.player.influencePoints(TEST_PLATFORM_FULL, TEST_SUMMONER, function(error, ignored) {
+          should.not.exist(error);
           profile.should.be.an('object');
           done();
         });
@@ -169,9 +163,9 @@ describe('node-resteemo', function() {
           .get('/player/' + TEST_PLATFORM + '/fakejson/influence_points')
           .replyWithFile(200, DATA_FOLDER + 'error-json.json');
 
-        this.teemo.player.influencePoints(TEST_PLATFORM, 'fakejson', function(err, noProfile) {
-          err.should.be.an('object');
-          should.not.exist(noProfile);
+        teemo.player.influencePoints(TEST_PLATFORM, 'fakejson', function(error, nothing) {
+          should.exist(error);
+          should.not.exist(nothing);
           done();
         });
       });
