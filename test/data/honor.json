@@ -1,0 +1,27 @@
+{
+    "_": {
+        "API_CALLS_REMAINING": 1733273,
+        "ImportantNotice": "",
+        "APP_ID": null
+    },
+    "success": true,
+    "requestTime": "2013-06-21T09:11:06-07:00",
+    "shard": "Europe_West:ZjVhODQxNDA1NGZjMjM3MzNjMzc3YzcyNDM1Njk3NzQxNzU5Mzg2MA",
+    "player": {
+        "accountId": 24132405,
+        "summonerId": 20820067,
+        "name": "Guardsman Bob",
+        "icon": 547,
+        "internalName": "guardsmanbob",
+        "level": 30
+    },
+    "data": {
+        "totals": [
+            0,
+            305,
+            207,
+            423,
+            361
+        ]
+    }
+}
