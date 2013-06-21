@@ -75,9 +75,21 @@ function responseHandler(req, callback) {
         return callback(error);
       }
 
-      if (_.contains(res.request.uri.path, 'recent_games')) {
+      var hasSecondSuccess;
+      switch (false) {
+        case !(_.contains(res.request.uri.path, 'recent_games')):
+          hasSecondSuccess = true;
+          break;
+        case !(_.contains(res.request.uri.path, 'runes')):
+          hasSecondSuccess = true;
+          break;
+        default:
+          hasSecondSuccess = false;
+      }
+
+      if (hasSecondSuccess) {
         if (!response.data._success) {
-          var error = brandError('api failed to return recent games');
+          var error = brandError('api failed at second success check');
           return callback(error);
         }
       }
@@ -170,7 +182,8 @@ module.exports = function(refererString) {
   var teemo = {};
 
   /**
-   * HTTP GET /player/{platform}/{summoner}
+   * Returns primarily ID-based data for String `summoner` on String `platform`.
+   * Account and summoner IDs are not unique across multiple platforms.
    *
    * @public
    * @param {String} platform
@@ -183,7 +196,8 @@ module.exports = function(refererString) {
   };
 
   /**
-   * HTTP GET /player/{platform}/{summoner}/recent_games
+   * Returns last 10 matches (order is random) for String `summoner` on String
+   * `platform`.
    *
    * @public
    * @param {String} platform
@@ -196,7 +210,8 @@ module.exports = function(refererString) {
   };
 
   /**
-   * HTTP GET /player/{platform}/{summoner}/influence_points
+   * Returns lifetime influence point gains for String `summoner` on String
+   * `platform`.
    *
    * @public
    * @param {String} platform
@@ -206,6 +221,19 @@ module.exports = function(refererString) {
    */
   teemo.player.influencePoints = function(platform, summoner, callback) {
     playerRequest(platform, summoner, 'influence_points', callback);
+  };
+
+  /**
+   * Returns runepages for String `summoner` on String `platform`.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, runes)` where `runes`
+   *   is the API response as an Object.
+   */
+  teemo.player.runes = function(platform, summoner, callback) {
+    playerRequest(platform, summoner, 'runes', callback);
   };
 
   return teemo;

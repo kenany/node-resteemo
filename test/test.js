@@ -127,5 +127,29 @@ describe('node-resteemo', function() {
         points.should.be.an('object');
       });
     });
+
+    describe('runes', function() {
+      before(function(done) {
+        scout
+          .get(PLAYER_PATH + '/runes')
+          .replyWithFile(200, DATA_FOLDER + 'runes.json');
+
+        teemo.player.runes(TEST_PLATFORM, TEST_SUMMONER, function(error, runes) {
+          if (error) return done(error);
+          this.runes = runes;
+          done();
+        });
+      });
+      after(function() {
+        this.runes = null;
+      });
+
+      it('should be a function', function() {
+        teemo.player.runes.should.be.a('function');
+      });
+      it('should return an object', function() {
+        runes.should.be.an('object');
+      });
+    });
   });
 });
