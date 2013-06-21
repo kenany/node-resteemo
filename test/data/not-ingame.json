@@ -1,0 +1,9 @@
+{
+    "_": {
+        "APP_ID": null
+    },
+    "success": false,
+    "shard": "Europe_West:ZjVhODQxNDA1NGZjMjM3MzNjMzc3YzcyNDM1Njk3NzQxNzU5Mzg2MA==",
+    "eid": 503,
+    "error_message": "There is no current active observable game for this summoner."
+}
