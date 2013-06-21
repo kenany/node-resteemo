@@ -36,6 +36,7 @@ Looks up information for String `summoner` on String `platform`.
 - `teemo.player.runes(platform, summoner, callback)`
 - `teemo.player.mastery(platform, summoner, callback)`
 - `teemo.player.leagues(platform, summoner, callback)`
+- `teemo.player.honor(platform, summoner, callback)`
 
 ## Supported platforms
 

@@ -268,5 +268,18 @@ module.exports = function(refererString) {
     playerRequest(platform, summoner, 'leagues', callback);
   };
 
+  /**
+   * Returns honor.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, honor)` where `honor`
+   *   is the API response as an Object.
+   */
+  teemo.player.honor = function(platform, summoner, callback) {
+    playerRequest(platform, summoner, 'honor', callback);
+  };
+
   return teemo;
 };

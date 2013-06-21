@@ -199,5 +199,29 @@ describe('node-resteemo', function() {
         leagues.should.be.an('object');
       });
     });
+
+    describe('honor', function() {
+      before(function(done) {
+        scout
+          .get(PLAYER_PATH + '/honor')
+          .replyWithFile(200, DATA_FOLDER + 'honor.json');
+
+        teemo.player.honor(TEST_PLATFORM, TEST_SUMMONER, function(error, honor) {
+          if (error) return done(error);
+          this.honor = honor;
+          done();
+        });
+      });
+      after(function() {
+        this.honor = null;
+      });
+
+      it('should be a function', function() {
+        teemo.player.honor.should.be.a('function');
+      });
+      it('should return an object', function() {
+        honor.should.be.an('object');
+      });
+    });
   });
 });
