@@ -101,28 +101,6 @@ describe('node-resteemo', function() {
       it('should return an object', function() {
         games.should.be.an('object');
       });
-      it('should work with full platform names', function(done) {
-        scout
-          .get(PLAYER_PATH + '/recent_games')
-          .replyWithFile(200, DATA_FOLDER + 'recent_games.json');
-
-        teemo.player.recentGames(TEST_PLATFORM_FULL, TEST_SUMMONER, function(error, ignored) {
-          should.not.exist(error);
-          ignored.should.be.an('object');
-          done();
-        });
-      });
-      it('should return error if json cannot be parsed', function(done) {
-        scout
-          .get('/player/' + TEST_PLATFORM + '/fakejson/recent_games')
-          .replyWithFile(200, DATA_FOLDER + 'error-json.json');
-
-        teemo.player.recentGames(TEST_PLATFORM, 'fakejson', function(error, nothing) {
-          should.exist(error);
-          should.not.exist(nothing);
-          done();
-        });
-      });
     });
 
     describe('influencePoints', function() {
@@ -146,28 +124,6 @@ describe('node-resteemo', function() {
       });
       it('should return an object', function() {
         points.should.be.an('object');
-      });
-      it('should work with full platform names', function(done) {
-        scout
-          .get(PLAYER_PATH + '/influence_points')
-          .replyWithFile(200, DATA_FOLDER + 'influence_points.json');
-
-        teemo.player.influencePoints(TEST_PLATFORM_FULL, TEST_SUMMONER, function(error, ignored) {
-          should.not.exist(error);
-          ignored.should.be.an('object');
-          done();
-        });
-      });
-      it('should return error if json cannot be parsed', function(done) {
-        scout
-          .get('/player/' + TEST_PLATFORM + '/fakejson/influence_points')
-          .replyWithFile(200, DATA_FOLDER + 'error-json.json');
-
-        teemo.player.influencePoints(TEST_PLATFORM, 'fakejson', function(error, nothing) {
-          should.exist(error);
-          should.not.exist(nothing);
-          done();
-        });
       });
     });
   });
