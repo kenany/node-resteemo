@@ -62,7 +62,7 @@ describe('node-resteemo', function() {
         .replyWithFile(503, DATA_FOLDER + 'error-profile.json');
 
       teemo.player(TEST_PLATFORM, 'guardsmanbo', function(error, nothing) {
-        error.should.be.an('object');
+        should.exist(error);
         should.not.exist(nothing);
         done();
       });
@@ -117,9 +117,9 @@ describe('node-resteemo', function() {
           .get('/player/' + TEST_PLATFORM + '/fakejson/recent_games')
           .replyWithFile(200, DATA_FOLDER + 'error-json.json');
 
-        teemo.player.recentGames(TEST_PLATFORM, 'fakejson', function(error, noProfile) {
+        teemo.player.recentGames(TEST_PLATFORM, 'fakejson', function(error, nothing) {
           should.exist(error);
-          should.not.exist(noProfile);
+          should.not.exist(nothing);
           done();
         });
       });
@@ -154,7 +154,7 @@ describe('node-resteemo', function() {
 
         teemo.player.influencePoints(TEST_PLATFORM_FULL, TEST_SUMMONER, function(error, ignored) {
           should.not.exist(error);
-          profile.should.be.an('object');
+          ignored.should.be.an('object');
           done();
         });
       });
