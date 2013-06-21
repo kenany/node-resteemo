@@ -86,24 +86,13 @@ shorthand version.
 
 ## Release notes
 
-### 2.0.0
+### 2.1.0
 
-- Response data is no longer modified (as expected from an API wrapper).
-- [#2](https://github.com/KenanY/node-resteemo/issues/2): `player.create` is now simply `player`.
-- [#4](https://github.com/KenanY/node-resteemo/issues/4): Use native JSON implementation instead of JSON 3.
-- `null` is no longer passed as the second argument to callbacks if there's an error.
-- Updated how some callbacks are passed around internally.
-- Reduced internal redundancy by using a `playerRequest` function.
-- Internal `normalizePlatform` function is now synchronous.
-- Switched to using `.length` instead of `lodash.size` for Strings internally.
-- Added `coverage` and `test` folders to `.npmignore`.
-- Removed `node_modules` from `.npmignore` as it is ignored by default.
-- Removed `CONTRIBUTING.md` from `.npmignore`.
-- Added `license` field to `package.json`.
-- Renamed `author.web` field to `author.url` in `package.json`.
-- Removed "in Node" from `description` field in `package.json`.
-- Removed "rest" keyword from `package.json`.
-- Simplified `repository` field in `package.json`.
-- Updated Lo-Dash to 1.3
+- Simplified API docs
+- Added more player requests:
+  - `teemo.player.runes(platform, summoner, callback)`
+  - `teemo.player.mastery(platform, summoner, callback)`
+  - `teemo.player.leagues(platform, summoner, callback)`
+  - `teemo.player.honor(platform, summoner, callback)`
 
 View previous releases [here](https://github.com/KenanY/node-resteemo/wiki/Changelog).
