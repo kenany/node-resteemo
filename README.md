@@ -38,6 +38,10 @@ Looks up information for String `summoner` on String `platform`.
 - `teemo.player.leagues(platform, summoner, callback)`
 - `teemo.player.honor(platform, summoner, callback)`
 
+Here, `season` is a Number.
+
+- `teemo.player.rankedStats(platform, summoner, season, callback)`
+
 ## Supported platforms
 
 Below is a table of the platforms that RESTeemo supports. When polling

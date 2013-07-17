@@ -169,20 +169,24 @@ module.exports = function(refererString) {
    * @param {String} path
    * @param {Function} callback
    */
-  function playerRequest(platform, summoner, path, callback) {
-    var shortPlatform = normalizePlatform(platform);
+  function playerRequest(options, callback) {
+    var shortPlatform = normalizePlatform(options.platform);
     if (_.isNull(shortPlatform)) {
       var error = brandError('invalid platform');
       return callback(error);
     }
 
-    if (_.isNull(path)) {
-      path = '';
+    if (_.isNull(options.path)) {
+      options.path = '';
     } else {
-      path = '/' + path;
+      options.path = '/' + options.path;
     }
 
-    get('/player/' + shortPlatform + '/' + summoner + path, callback);
+    if (_.isUndefined(options.season)) {
+      get('/player/' + shortPlatform + '/' + options.summoner + options.path, callback);
+    } else {
+      get('/player/' + shortPlatform + '/' + options.summoner + options.path + '/' + options.season, callback);
+    }
   }
 
   var teemo = {};
@@ -198,7 +202,11 @@ module.exports = function(refererString) {
    *   `profile` is the API response as an Object.
    */
   teemo.player = function(platform, summoner, callback) {
-    playerRequest(platform, summoner, null, callback);
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: null
+    }, callback);
   };
 
   /**
@@ -212,7 +220,11 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.recentGames = function(platform, summoner, callback) {
-    playerRequest(platform, summoner, 'recent_games', callback);
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'recent_games'
+    }, callback);
   };
 
   /**
@@ -226,7 +238,11 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.influencePoints = function(platform, summoner, callback) {
-    playerRequest(platform, summoner, 'influence_points', callback);
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'influence_points'
+    }, callback);
   };
 
   /**
@@ -239,7 +255,11 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.runes = function(platform, summoner, callback) {
-    playerRequest(platform, summoner, 'runes', callback);
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'runes'
+    }, callback);
   };
 
   /**
@@ -252,7 +272,11 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.mastery = function(platform, summoner, callback) {
-    playerRequest(platform, summoner, 'mastery', callback);
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'mastery'
+    }, callback);
   };
 
   /**
@@ -265,7 +289,11 @@ module.exports = function(refererString) {
    *   `leagues` is the API response as an Object.
    */
   teemo.player.leagues = function(platform, summoner, callback) {
-    playerRequest(platform, summoner, 'leagues', callback);
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'leagues'
+    }, callback);
   };
 
   /**
@@ -278,7 +306,30 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.honor = function(platform, summoner, callback) {
-    playerRequest(platform, summoner, 'honor', callback);
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'honor'
+    }, callback);
+  };
+
+  /**
+   * Returns ranked stats for String `summoner` in Number `season`.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Number} season
+   * @param {Function} callback Used as `callback(error, stats)` where `stats`
+   *   is the API response as an Object.
+   */
+  teemo.player.rankedStats = function(platform, summoner, season, callback) {
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'ranked_stats/season',
+      season: season
+    }, callback);
   };
 
   return teemo;

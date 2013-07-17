@@ -223,5 +223,29 @@ describe('node-resteemo', function() {
         honor.should.be.an('object');
       });
     });
+
+    describe('rankedStats', function() {
+      before(function(done) {
+        scout
+          .get(PLAYER_PATH + '/ranked_stats/season/3')
+          .replyWithFile(200, DATA_FOLDER + 'ranked_stats.json');
+
+        teemo.player.rankedStats(TEST_PLATFORM, TEST_SUMMONER, 3, function(error, stats) {
+          if (error) return done(error);
+          this.stats = stats;
+          done();
+        });
+      });
+      after(function() {
+        this.stats = null;
+      });
+
+      it('should be a function', function() {
+        teemo.player.rankedStats.should.be.a('function');
+      });
+      it('should return an object', function() {
+        stats.should.be.an('object');
+      });
+    });
   });
 });
