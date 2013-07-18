@@ -182,11 +182,7 @@ module.exports = function(refererString) {
       options.path = '/' + options.path;
     }
 
-    if (_.isUndefined(options.season)) {
-      get('/player/' + shortPlatform + '/' + options.summoner + options.path, callback);
-    } else {
-      get('/player/' + shortPlatform + '/' + options.summoner + options.path + '/' + options.season, callback);
-    }
+    get('/player/' + shortPlatform + '/' + options.summoner + options.path + (options.season || ''), callback);
   }
 
   var teemo = {};
@@ -327,7 +323,7 @@ module.exports = function(refererString) {
     playerRequest({
       platform: platform,
       summoner: summoner,
-      path: 'ranked_stats/season',
+      path: 'ranked_stats/season/',
       season: season
     }, callback);
   };
