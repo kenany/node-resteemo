@@ -90,13 +90,10 @@ shorthand version.
 
 ## Release notes
 
-### 2.1.0
+### 2.2.0
 
-- Simplified API docs
-- Added more player requests:
-  - `teemo.player.runes(platform, summoner, callback)`
-  - `teemo.player.mastery(platform, summoner, callback)`
-  - `teemo.player.leagues(platform, summoner, callback)`
-  - `teemo.player.honor(platform, summoner, callback)`
+- Added `resteemo.player.rankedStats(platform, summoner, season, callback)`
+- Platform check is now a little faster
+- Update request to 2.22.x
 
 View previous releases [here](https://github.com/KenanY/node-resteemo/wiki/Changelog).
