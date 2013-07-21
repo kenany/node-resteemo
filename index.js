@@ -77,6 +77,9 @@ function responseHandler(req, callback) {
 
       var hasSecondSuccess;
       switch (false) {
+        case !(_.contains(res.request.uri.path, 'ingame')):
+          hasSecondSuccess = true;
+          break;
         case !(_.contains(res.request.uri.path, 'recent_games')):
           hasSecondSuccess = true;
           break;
@@ -87,6 +90,12 @@ function responseHandler(req, callback) {
           hasSecondSuccess = true;
           break;
         case !(_.contains(res.request.uri.path, 'leagues')):
+          hasSecondSuccess = true;
+          break;
+        case !(_.contains(res.request.uri.path, 'ranked_stats')):
+          hasSecondSuccess = true;
+          break;
+        case !(_.contains(res.request.uri.path, 'teams')):
           hasSecondSuccess = true;
           break;
         default:
