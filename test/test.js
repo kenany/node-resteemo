@@ -271,5 +271,29 @@ describe('node-resteemo', function() {
         stats.should.be.an('object');
       });
     });
+
+    describe('teams', function() {
+      before(function(done) {
+        scout
+          .get(PLAYER_PATH + '/teams')
+          .replyWithFile(200, DATA_FOLDER + 'teams.json');
+
+        teemo.player.teams(TEST_PLATFORM, TEST_SUMMONER, function(error, teams) {
+          if (error) return done(error);
+          this.teams = teams;
+          done();
+        });
+      });
+      after(function() {
+        this.teams = null;
+      });
+
+      it('should be a function', function() {
+        teemo.player.teams.should.be.a('function');
+      });
+      it('should return an object', function() {
+        teams.should.be.an('object');
+      });
+    });
   });
 });

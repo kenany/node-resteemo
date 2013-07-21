@@ -346,5 +346,22 @@ module.exports = function(refererString) {
     }, callback);
   };
 
+  /**
+   * Returns all teams (and team match history) that `summoner` is a member of.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, stats)` where `teams`
+   *   is the API response as an Object.
+   */
+  teemo.player.teams = function(platform, summoner, callback) {
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'teams'
+    }, callback);
+  };
+
   return teemo;
 };

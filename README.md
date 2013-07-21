@@ -38,6 +38,7 @@ Looks up information for String `summoner` on String `platform`.
 - `teemo.player.mastery(platform, summoner, callback)`
 - `teemo.player.leagues(platform, summoner, callback)`
 - `teemo.player.honor(platform, summoner, callback)`
+- `teemo.player.teams(platform, summoner, callback)`
 
 Here, `season` is a Number.
 
