@@ -12,6 +12,15 @@ var PLATFORMS = [
   {'short': 'las', 'full': 'Latin_America_South'},
   {'short': 'lan', 'full': 'Latin_America_North'}
 ];
+var SECOND_SUCCESSES = [
+  'ingame',
+  'recent_games',
+  'runes',
+  'mastery',
+  'leagues',
+  'ranked_stats',
+  'teams'
+];
 
 /**
  * Create an error whose message begins with 'node-resteemo - '.
@@ -75,32 +84,13 @@ function responseHandler(req, callback) {
         return callback(error);
       }
 
-      var hasSecondSuccess;
-      switch (false) {
-        case !(_.contains(res.request.uri.path, 'ingame')):
+      var hasSecondSuccess = false;
+      _(SECOND_SUCCESSES).forEach(function(value) {
+        if (_.contains(res.request.uri.path, value)){
           hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'recent_games')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'runes')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'mastery')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'leagues')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'ranked_stats')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'teams')):
-          hasSecondSuccess = true;
-          break;
-        default:
-          hasSecondSuccess = false;
-      }
+          return false;
+        }
+      });
 
       if (hasSecondSuccess) {
         if (!response.data._success) {
