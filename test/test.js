@@ -80,6 +80,30 @@ describe('node-resteemo', function() {
       });
     });
 
+    describe('ingame', function() {
+      before(function(done) {
+        scout
+          .get(PLAYER_PATH + '/ingame')
+          .replyWithFile(200, DATA_FOLDER + 'ingame.json');
+
+        teemo.player.ingame(TEST_PLATFORM, TEST_SUMMONER, function(error, game) {
+          if (error) return done(error);
+          this.game = game;
+          done();
+        });
+      });
+      after(function() {
+        this.game = null;
+      });
+
+      it('should be a function', function() {
+        teemo.player.ingame.should.be.a('function');
+      });
+      it('should return an object', function() {
+        game.should.be.an('object');
+      });
+    });
+
     describe('recentGames', function() {
       before(function(done) {
         scout

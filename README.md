@@ -31,6 +31,7 @@ error. Refer to RESTeemo's API docs for what each `response` looks like.
 Looks up information for String `summoner` on String `platform`.
 
 - `teemo.player(platform, summoner, callback)`
+- `teemo.player.ingame(platform, summoner, callback)`
 - `teemo.player.recentGames(platform, summoner, callback)`
 - `teemo.player.influencePoints(platform, summoner, callback)`
 - `teemo.player.runes(platform, summoner, callback)`

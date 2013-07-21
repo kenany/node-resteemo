@@ -206,6 +206,24 @@ module.exports = function(refererString) {
   };
 
   /**
+   * Returns observer metadata and information if String `summoner` on String
+   * `platform` is playing a valid game.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} summoner
+   * @param {Function} callback Used as `callback(error, profile)` where
+   *   `game` is the API response as an Object.
+   */
+  teemo.player.ingame = function(platform, summoner, callback) {
+    playerRequest({
+      platform: platform,
+      summoner: summoner,
+      path: 'ingame'
+    }, callback);
+  };
+
+  /**
    * Returns last 10 matches (order is random) for String `summoner` on String
    * `platform`.
    *
