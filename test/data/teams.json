@@ -1,0 +1,485 @@
+{
+    "_": {
+        "API_CALLS_REMAINING": 4011303,
+        "ImportantNotice": "",
+        "APP_ID": null
+    },
+    "success": true,
+    "requestTime": "2013-07-21T10:56:03-07:00",
+    "shard": "Europe_West:MTc5YmUzZTNiZWE0ZmM5NjZhMTg5NWM5Y2I3OTg4NzJmYmZmNmYxYQ",
+    "player": {
+        "accountId": 24132405,
+        "summonerId": 20820067,
+        "name": "Guardsman Bob",
+        "icon": 552,
+        "internalName": "guardsmanbob",
+        "level": 30
+    },
+    "data": {
+        "playerId": 20820067,
+        "createdTeams": {
+            "array": [
+
+            ]
+        },
+        "teamsSummary": {
+            "array": [
+                {
+                    "teamStatSummary": {
+                        "dataVersion": 0,
+                        "teamStatDetails": {
+                            "array": [
+                                {
+                                    "dataVersion": 0,
+                                    "maxRating": 0,
+                                    "teamIdString": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8",
+                                    "seedRating": 0,
+                                    "losses": 0,
+                                    "rating": 0,
+                                    "averageGamesPlayed": 0,
+                                    "teamStatTypeString": "RANKED_TEAM_5x5",
+                                    "teamId": {
+                                        "fullId": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8"
+                                    },
+                                    "futureData": null,
+                                    "teamStatType": "RANKED_TEAM_5x5",
+                                    "wins": 0
+                                },
+                                {
+                                    "dataVersion": 0,
+                                    "maxRating": 0,
+                                    "teamIdString": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8",
+                                    "seedRating": 0,
+                                    "losses": 0,
+                                    "rating": 0,
+                                    "averageGamesPlayed": 0,
+                                    "teamStatTypeString": "ODIN_TEAM_PREMADE",
+                                    "teamId": {
+                                        "fullId": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8"
+                                    },
+                                    "futureData": null,
+                                    "teamStatType": "ODIN_TEAM_PREMADE",
+                                    "wins": 0
+                                },
+                                {
+                                    "dataVersion": 0,
+                                    "maxRating": 0,
+                                    "teamIdString": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8",
+                                    "seedRating": 0,
+                                    "losses": 0,
+                                    "rating": 0,
+                                    "averageGamesPlayed": 0,
+                                    "teamStatTypeString": "RANKED_TEAM_3x3",
+                                    "teamId": {
+                                        "fullId": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8"
+                                    },
+                                    "futureData": null,
+                                    "teamStatType": "RANKED_TEAM_3x3",
+                                    "wins": 0
+                                }
+                            ]
+                        },
+                        "teamIdString": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8",
+                        "teamId": {
+                            "fullId": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8"
+                        },
+                        "futureData": null
+                    },
+                    "status": "RANKED",
+                    "tag": "ALT QQ",
+                    "roster": {
+                        "ownerId": 19819101,
+                        "memberList": {
+                            "array": [
+                                {
+                                    "joinDate": "Dec 28, 2011 4:42:22 AM",
+                                    "inviteDate": "Dec 28, 2011 4:42:22 AM",
+                                    "playerName": null,
+                                    "playerId": 19819101,
+                                    "status": "MEMBER"
+                                },
+                                {
+                                    "joinDate": "Dec 28, 2011 4:43:06 AM",
+                                    "inviteDate": "Dec 28, 2011 4:42:41 AM",
+                                    "playerName": null,
+                                    "playerId": 22367963,
+                                    "status": "MEMBER"
+                                },
+                                {
+                                    "joinDate": "Dec 29, 2011 12:56:24 PM",
+                                    "inviteDate": "Dec 28, 2011 4:43:21 AM",
+                                    "playerName": null,
+                                    "playerId": 20441935,
+                                    "status": "MEMBER"
+                                },
+                                {
+                                    "joinDate": "Dec 29, 2011 12:57:03 PM",
+                                    "inviteDate": "Dec 29, 2011 12:56:17 PM",
+                                    "playerName": null,
+                                    "playerId": 20820067,
+                                    "status": "MEMBER"
+                                },
+                                {
+                                    "joinDate": "Dec 31, 2011 6:05:24 AM",
+                                    "inviteDate": "Dec 31, 2011 5:55:43 AM",
+                                    "playerName": null,
+                                    "playerId": 166559,
+                                    "status": "MEMBER"
+                                }
+                            ]
+                        }
+                    },
+                    "lastGameDate": "Mar 4, 2012 9:24:30 AM",
+                    "modifyDate": "Feb 18, 2013 10:09:50 AM",
+                    "messageOfDay": null,
+                    "teamId": {
+                        "fullId": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8"
+                    },
+                    "lastJoinDate": "May 5, 2012 10:51:17 AM",
+                    "secondLastJoinDate": null,
+                    "secondsUntilEligibleForDeletion": 9.2233720368548e+18,
+                    "matchHistory": {
+                        "array": [
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 53,
+                                "opposingTeamName": "XXII Century",
+                                "invalid": false,
+                                "deaths": 11,
+                                "gameId": 328464631,
+                                "kills": 24,
+                                "win": true,
+                                "date": 1330881869870,
+                                "opposingTeamKills": 11
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 18,
+                                "opposingTeamName": "Fresse Zak",
+                                "invalid": false,
+                                "deaths": 17,
+                                "gameId": 328429116,
+                                "kills": 7,
+                                "win": false,
+                                "date": 1330879552921,
+                                "opposingTeamKills": 17
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 30,
+                                "opposingTeamName": "Fresse Zak",
+                                "invalid": false,
+                                "deaths": 24,
+                                "gameId": 328395218,
+                                "kills": 18,
+                                "win": false,
+                                "date": 1330876786485,
+                                "opposingTeamKills": 24
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 17,
+                                "opposingTeamName": "Team ALTERNATE",
+                                "invalid": true,
+                                "deaths": 19,
+                                "gameId": 297716124,
+                                "kills": 12,
+                                "win": false,
+                                "date": 1327522971322,
+                                "opposingTeamKills": 0
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 56,
+                                "opposingTeamName": "QuickLoL",
+                                "invalid": false,
+                                "deaths": 9,
+                                "gameId": 297666853,
+                                "kills": 31,
+                                "win": true,
+                                "date": 1327520305471,
+                                "opposingTeamKills": 0
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 19,
+                                "opposingTeamName": "Team SoftKitty",
+                                "invalid": false,
+                                "deaths": 19,
+                                "gameId": 297635554,
+                                "kills": 9,
+                                "win": false,
+                                "date": 1327518227304,
+                                "opposingTeamKills": 0
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 5,
+                                "opposingTeamName": "Global Gamin",
+                                "invalid": false,
+                                "deaths": 20,
+                                "gameId": 297614304,
+                                "kills": 7,
+                                "win": false,
+                                "date": 1327515873498,
+                                "opposingTeamKills": 0
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 20,
+                                "opposingTeamName": "WeAreFailers",
+                                "invalid": false,
+                                "deaths": 23,
+                                "gameId": 297591209,
+                                "kills": 14,
+                                "win": false,
+                                "date": 1327513616064,
+                                "opposingTeamKills": 0
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 52,
+                                "opposingTeamName": "CounterHun",
+                                "invalid": false,
+                                "deaths": 14,
+                                "gameId": 297559942,
+                                "kills": 26,
+                                "win": true,
+                                "date": 1327511160570,
+                                "opposingTeamKills": 0
+                            }
+                        ]
+                    },
+                    "name": "Gribbe Eskadrillen",
+                    "thirdLastJoinDate": null,
+                    "createDate": "Dec 28, 2011 4:42:22 AM"
+                },
+                {
+                    "teamStatSummary": {
+                        "dataVersion": 0,
+                        "teamStatDetails": {
+                            "array": [
+                                {
+                                    "dataVersion": 0,
+                                    "maxRating": 0,
+                                    "teamIdString": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b",
+                                    "seedRating": 0,
+                                    "losses": 0,
+                                    "rating": 0,
+                                    "averageGamesPlayed": 0,
+                                    "teamStatTypeString": "ODIN_TEAM_PREMADE",
+                                    "teamId": {
+                                        "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                                    },
+                                    "futureData": null,
+                                    "teamStatType": "ODIN_TEAM_PREMADE",
+                                    "wins": 0
+                                },
+                                {
+                                    "dataVersion": 0,
+                                    "maxRating": 0,
+                                    "teamIdString": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b",
+                                    "seedRating": 0,
+                                    "losses": 0,
+                                    "rating": 0,
+                                    "averageGamesPlayed": 0,
+                                    "teamStatTypeString": "RANKED_TEAM_3x3",
+                                    "teamId": {
+                                        "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                                    },
+                                    "futureData": null,
+                                    "teamStatType": "RANKED_TEAM_3x3",
+                                    "wins": 0
+                                },
+                                {
+                                    "dataVersion": 0,
+                                    "maxRating": 0,
+                                    "teamIdString": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b",
+                                    "seedRating": 0,
+                                    "losses": 0,
+                                    "rating": 0,
+                                    "averageGamesPlayed": 0,
+                                    "teamStatTypeString": "RANKED_TEAM_5x5",
+                                    "teamId": {
+                                        "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                                    },
+                                    "futureData": null,
+                                    "teamStatType": "RANKED_TEAM_5x5",
+                                    "wins": 0
+                                }
+                            ]
+                        },
+                        "teamIdString": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b",
+                        "teamId": {
+                            "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                        },
+                        "futureData": null
+                    },
+                    "status": "RANKED",
+                    "tag": "WHEELZ",
+                    "roster": {
+                        "ownerId": 19819101,
+                        "memberList": {
+                            "array": [
+                                {
+                                    "joinDate": "Jan 28, 2012 6:31:54 AM",
+                                    "inviteDate": "Jan 28, 2012 6:31:54 AM",
+                                    "playerName": null,
+                                    "playerId": 19819101,
+                                    "status": "MEMBER"
+                                },
+                                {
+                                    "joinDate": "Jan 28, 2012 5:07:44 PM",
+                                    "inviteDate": "Jan 28, 2012 5:07:39 PM",
+                                    "playerName": null,
+                                    "playerId": 22367963,
+                                    "status": "MEMBER"
+                                },
+                                {
+                                    "joinDate": "Apr 27, 2012 12:35:07 PM",
+                                    "inviteDate": "Apr 27, 2012 12:33:32 PM",
+                                    "playerName": null,
+                                    "playerId": 20820067,
+                                    "status": "MEMBER"
+                                }
+                            ]
+                        }
+                    },
+                    "lastGameDate": "May 4, 2012 1:20:03 PM",
+                    "modifyDate": "May 24, 2013 4:23:17 AM",
+                    "messageOfDay": null,
+                    "teamId": {
+                        "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                    },
+                    "lastJoinDate": "May 4, 2012 11:55:31 AM",
+                    "secondLastJoinDate": null,
+                    "secondsUntilEligibleForDeletion": 9.2233720368548e+18,
+                    "matchHistory": {
+                        "array": [
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 4,
+                                "opposingTeamName": "TBTEST2",
+                                "invalid": false,
+                                "deaths": 15,
+                                "gameId": 380193060,
+                                "kills": 7,
+                                "win": false,
+                                "date": 1336162803072,
+                                "opposingTeamKills": 15
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 56,
+                                "opposingTeamName": "MrSpaceAnimals",
+                                "invalid": false,
+                                "deaths": 32,
+                                "gameId": 380140799,
+                                "kills": 29,
+                                "win": false,
+                                "date": 1336160736747,
+                                "opposingTeamKills": 32
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 12,
+                                "opposingTeamName": "Take the Bait",
+                                "invalid": false,
+                                "deaths": 14,
+                                "gameId": 373494978,
+                                "kills": 6,
+                                "win": false,
+                                "date": 1335559637734,
+                                "opposingTeamKills": 14
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 6,
+                                "opposingTeamName": "Take the Bait",
+                                "invalid": false,
+                                "deaths": 16,
+                                "gameId": 373472557,
+                                "kills": 7,
+                                "win": false,
+                                "date": 1335557457671,
+                                "opposingTeamKills": 16
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 62,
+                                "opposingTeamName": "Painful things ftw",
+                                "invalid": false,
+                                "deaths": 5,
+                                "gameId": 300250822,
+                                "kills": 36,
+                                "win": true,
+                                "date": 1327803530364,
+                                "opposingTeamKills": 0
+                            },
+                            {
+                                "gameMode": "CLASSIC",
+                                "mapId": 1,
+                                "assists": 45,
+                                "opposingTeamName": "TheFeeteD",
+                                "invalid": false,
+                                "deaths": 9,
+                                "gameId": 300235541,
+                                "kills": 31,
+                                "win": true,
+                                "date": 1327801146891,
+                                "opposingTeamKills": 0
+                            }
+                        ]
+                    },
+                    "name": "Wheelchair Thieves",
+                    "thirdLastJoinDate": null,
+                    "createDate": "Jan 28, 2012 6:31:54 AM"
+                }
+            ]
+        },
+        "playerTeams": {
+            "array": [
+                {
+                    "memberStatusString": "MEMBER",
+                    "secondsUntilEligibleForDeletion": 9.2233720368548e+18,
+                    "dataVersion": 0,
+                    "tag": "ALT QQ",
+                    "name": "Gribbe Eskadrillen",
+                    "memberStatus": "MEMBER",
+                    "teamId": {
+                        "fullId": "TEAM-2d5fc1f1-3417-4d37-bda0-0e69a3f0a0b8"
+                    },
+                    "futureData": null
+                },
+                {
+                    "memberStatusString": "MEMBER",
+                    "secondsUntilEligibleForDeletion": 9.2233720368548e+18,
+                    "dataVersion": 0,
+                    "tag": "WHEELZ",
+                    "name": "Wheelchair Thieves",
+                    "memberStatus": "MEMBER",
+                    "teamId": {
+                        "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                    },
+                    "futureData": null
+                }
+            ]
+        },
+        "libteemo": "1.0",
+        "_success": 1
+    }
+}
