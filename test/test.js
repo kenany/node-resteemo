@@ -68,6 +68,17 @@ describe('node-resteemo', function() {
         done();
       });
     });
+    it('should return error if second api call fails', function(done) {
+      scout
+        .get('/player/' + TEST_PLATFORM + '/guardsmanbob')
+        .replyWithFile(503, DATA_FOLDER + 'error-second.json');
+
+      teemo.player(TEST_PLATFORM, 'guardsmanbob', function(error, nothing) {
+        should.exist(error);
+        should.not.exist(nothing);
+        done();
+      });
+    });
     it('should return error if json cannot be parsed', function(done) {
       scout
         .get('/player/' + TEST_PLATFORM + '/fakejson')

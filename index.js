@@ -75,34 +75,7 @@ function responseHandler(req, callback) {
         return callback(error);
       }
 
-      var hasSecondSuccess;
-      switch (false) {
-        case !(_.contains(res.request.uri.path, 'ingame')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'recent_games')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'runes')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'mastery')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'leagues')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'ranked_stats')):
-          hasSecondSuccess = true;
-          break;
-        case !(_.contains(res.request.uri.path, 'teams')):
-          hasSecondSuccess = true;
-          break;
-        default:
-          hasSecondSuccess = false;
-      }
-
-      if (hasSecondSuccess) {
+      if (!_.isUndefined(response.data._success)) {
         if (!response.data._success) {
           var error = brandError('api failed at second success check');
           return callback(error);
