@@ -44,6 +44,14 @@ Here, `season` is a Number.
 
 - `teemo.player.rankedStats(platform, summoner, season, callback)`
 
+### Team requests
+
+Looks up information for a team using String `tag` or String `guid` on String
+`platform`.
+
+- `teemo.team(platform, tag, callback)`
+- `teemo.team.leagues(platform, guid, callback)`
+
 ## Supported platforms
 
 Below is a table of the platforms that RESTeemo supports. When polling

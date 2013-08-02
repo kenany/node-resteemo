@@ -143,28 +143,31 @@ module.exports = function(refererString) {
   }
 
   /**
-   * Sets up a player request.
+   * Contructs the path to query.
    *
    * @private
-   * @param {String} platform
-   * @param {String} summoner
-   * @param {String} path
+   * @param {Object} options
    * @param {Function} callback
    */
-  function playerRequest(options, callback) {
+  function constructPath(options, callback) {
     var shortPlatform = normalizePlatform(options.platform);
     if (_.isNull(shortPlatform)) {
       var error = brandError('invalid platform');
       return callback(error);
     }
 
-    if (_.isNull(options.path)) {
+    if (_.isUndefined(options.path)) {
       options.path = '';
     } else {
       options.path = '/' + options.path;
     }
 
-    get('/player/' + shortPlatform + '/' + options.summoner + options.path + (options.season || ''), callback);
+    if (!_.isUndefined(options.summoner)) {
+      get('/player/' + shortPlatform + '/' + options.summoner + options.path + (options.season || ''), callback);
+    }
+    else if (options.tag || options.guid) {
+      get('/team/' + shortPlatform + options.path + '/' + (options.tag || options.guid) + (options.guid ? '/leagues' : ''), callback);
+    }
   }
 
   var teemo = {};
@@ -180,10 +183,9 @@ module.exports = function(refererString) {
    *   `profile` is the API response as an Object.
    */
   teemo.player = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
-      summoner: summoner,
-      path: null
+      summoner: summoner
     }, callback);
   };
 
@@ -198,7 +200,7 @@ module.exports = function(refererString) {
    *   `game` is the API response as an Object.
    */
   teemo.player.ingame = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'ingame'
@@ -216,7 +218,7 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.recentGames = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'recent_games'
@@ -234,7 +236,7 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.influencePoints = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'influence_points'
@@ -251,7 +253,7 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.runes = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'runes'
@@ -268,7 +270,7 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.mastery = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'mastery'
@@ -285,7 +287,7 @@ module.exports = function(refererString) {
    *   `leagues` is the API response as an Object.
    */
   teemo.player.leagues = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'leagues'
@@ -302,7 +304,7 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.honor = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'honor'
@@ -320,7 +322,7 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.rankedStats = function(platform, summoner, season, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'ranked_stats/season/',
@@ -338,10 +340,44 @@ module.exports = function(refererString) {
    *   is the API response as an Object.
    */
   teemo.player.teams = function(platform, summoner, callback) {
-    playerRequest({
+    constructPath({
       platform: platform,
       summoner: summoner,
       path: 'teams'
+    }, callback);
+  };
+
+  /**
+   * Returns team information and matches.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} tag
+   * @param {Function} callback Used as `callback(error, response)` where
+   *   `response` is the API response as an Object.
+   */
+  teemo.team = function(platform, tag, callback) {
+    constructPath({
+      platform: platform,
+      tag: tag,
+      path: 'tag'
+    }, callback);
+  };
+
+  /**
+   * Shows leagues for a given team GUID.
+   *
+   * @public
+   * @param {String} platform
+   * @param {String} guid
+   * @param {Function} callback Used as `callback(error, response)` where
+   *   `response` is the API response as an Object.
+   */
+  teemo.team.leagues = function(platform, guid, callback) {
+    constructPath({
+      platform: platform,
+      guid: guid,
+      path: 'guid'
     }, callback);
   };
 

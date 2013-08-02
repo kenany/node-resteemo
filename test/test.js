@@ -11,6 +11,7 @@ var TEST_SUMMONER = 'guardsmanbob';
 var TEST_PLATFORM = 'euw';
 var TEST_PLATFORM_FULL = 'Europe_West';
 var PLAYER_PATH = '/player/' + TEST_PLATFORM + '/' + TEST_SUMMONER;
+var TEAM_PATH = '/team/' + TEST_PLATFORM;
 var DATA_FOLDER = __dirname + '/data/';
 
 describe('node-resteemo', function() {
@@ -304,6 +305,54 @@ describe('node-resteemo', function() {
       });
       it('should return an object', function() {
         teams.should.be.an('object');
+      });
+    });
+  });
+
+  describe('team', function() {
+    before(function(done) {
+      scout
+        .get(TEAM_PATH + '/tag/WHEELZ')
+        .replyWithFile(200, DATA_FOLDER + 'tag.json');
+
+      teemo.team(TEST_PLATFORM, 'WHEELZ', function(error, matches) {
+        if (error) return done(error);
+        this.matches = matches;
+        done();
+      });
+    });
+    after(function() {
+      this.matches = null;
+    });
+
+    it('should be a function', function() {
+      teemo.team.should.be.a('function');
+    });
+    it('should return an object', function() {
+      matches.should.be.an('object');
+    });
+
+    describe('leagues', function() {
+      before(function(done) {
+        scout
+          .get(TEAM_PATH + '/guid/TEAM-1e4caa75-aaf0-11e2-8fcc-782bcb4d0bb2/leagues')
+          .replyWithFile(200, DATA_FOLDER + 'team_leagues.json');
+
+        teemo.team.leagues(TEST_PLATFORM, 'TEAM-1e4caa75-aaf0-11e2-8fcc-782bcb4d0bb2', function(error, leagues) {
+          if (error) return done(error);
+          this.leagues = leagues;
+          done();
+        });
+      });
+      after(function() {
+        this.leagues = null;
+      });
+
+      it('should be a function', function() {
+        teemo.team.leagues.should.be.a('function');
+      });
+      it('should return an object', function() {
+        leagues.should.be.an('object');
       });
     });
   });
