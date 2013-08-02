@@ -167,6 +167,8 @@ module.exports = function(refererString) {
     }
     else if (options.tag || options.guid) {
       get('/team/' + shortPlatform + options.path + '/' + (options.tag || options.guid) + (options.guid ? '/leagues' : ''), callback);
+    } else {
+      get('/service-state/' + shortPlatform + options.path, callback);
     }
   }
 
@@ -365,7 +367,7 @@ module.exports = function(refererString) {
   };
 
   /**
-   * Shows leagues for a given team GUID.
+   * Returns leagues for a given team GUID.
    *
    * @public
    * @param {String} platform
@@ -378,6 +380,21 @@ module.exports = function(refererString) {
       platform: platform,
       guid: guid,
       path: 'guid'
+    }, callback);
+  };
+
+  /**
+   * Returns free week.
+   *
+   * @public
+   * @param {String} platform
+   * @param {Function} callback Used as `callback(error, response)` where
+   *   `response` is the API response as an Object.
+   */
+  teemo.freeWeek = function(platform, callback) {
+    constructPath({
+      platform: platform,
+      path: 'free-week'
     }, callback);
   };
 

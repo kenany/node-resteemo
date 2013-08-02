@@ -356,4 +356,27 @@ describe('node-resteemo', function() {
       });
     });
   });
+  describe('freeWeek', function() {
+    before(function(done) {
+      scout
+        .get('/service-state/na/free-week')
+        .replyWithFile(200, DATA_FOLDER + 'free_week.json');
+
+      teemo.freeWeek('na', function(error, week) {
+        if (error) return done(error);
+        this.week = week;
+        done();
+      });
+    });
+    after(function() {
+      this.week = null;
+    });
+
+    it('should be a function', function() {
+      teemo.freeWeek.should.be.a('function');
+    });
+    it('should return an object', function() {
+      week.should.be.an('object');
+    });
+  });
 });
