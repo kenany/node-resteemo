@@ -1,0 +1,23 @@
+{
+    "_": {
+        "APP_ID": "server_tracked"
+    },
+    "success": true,
+    "requestTime": "2013-08-02T12:59:01-07:00",
+    "shard": "North_America:Zjc2MTQxYzViMWVmOTg0OGJhNzRiYTQyZGJkMTg4ZjdiYjc0OWQ1MQ",
+    "data": {
+        "free": {
+            "1": "Annie",
+            "15": "Sivir",
+            "45": "Veigar",
+            "67": "Vayne",
+            "89": "Leona",
+            "102": "Shyvana",
+            "111": "Nautilus",
+            "113": "Sejuani",
+            "114": "Fiora",
+            "267": "Nami"
+        },
+        "date": "2013-08-02T12:59:01-07:00"
+    }
+}
