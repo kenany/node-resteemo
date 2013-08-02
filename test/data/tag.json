@@ -1,0 +1,196 @@
+{
+    "_": {
+        "APP_ID": "server_tracked"
+    },
+    "success": true,
+    "requestTime": "2013-07-28T15:03:21-07:00",
+    "shard": "Europe_West:ZjVhODQxNDA1NGZjMjM3MzNjMzc3YzcyNDM1Njk3NzQxNzU5Mzg2MA",
+    "data": {
+        "teamStatSummary": {
+            "dataVersion": 0,
+            "teamStatDetails": {
+                "array": [
+                    {
+                        "dataVersion": 0,
+                        "maxRating": 0,
+                        "teamIdString": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b",
+                        "seedRating": 0,
+                        "losses": 0,
+                        "rating": 0,
+                        "averageGamesPlayed": 0,
+                        "teamStatTypeString": "RANKED_TEAM_3x3",
+                        "teamId": {
+                            "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                        },
+                        "futureData": null,
+                        "teamStatType": "RANKED_TEAM_3x3",
+                        "wins": 0
+                    },
+                    {
+                        "dataVersion": 0,
+                        "maxRating": 0,
+                        "teamIdString": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b",
+                        "seedRating": 0,
+                        "losses": 0,
+                        "rating": 0,
+                        "averageGamesPlayed": 0,
+                        "teamStatTypeString": "RANKED_TEAM_5x5",
+                        "teamId": {
+                            "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                        },
+                        "futureData": null,
+                        "teamStatType": "RANKED_TEAM_5x5",
+                        "wins": 0
+                    },
+                    {
+                        "dataVersion": 0,
+                        "maxRating": 0,
+                        "teamIdString": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b",
+                        "seedRating": 0,
+                        "losses": 0,
+                        "rating": 0,
+                        "averageGamesPlayed": 0,
+                        "teamStatTypeString": "ODIN_TEAM_PREMADE",
+                        "teamId": {
+                            "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+                        },
+                        "futureData": null,
+                        "teamStatType": "ODIN_TEAM_PREMADE",
+                        "wins": 0
+                    }
+                ]
+            },
+            "teamIdString": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b",
+            "teamId": {
+                "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+            },
+            "futureData": null
+        },
+        "status": "RANKED",
+        "tag": "WHEELZ",
+        "roster": {
+            "ownerId": 19819101,
+            "memberList": {
+                "array": [
+                    {
+                        "joinDate": "Jan 28, 2012 6:31:54 AM",
+                        "inviteDate": "Jan 28, 2012 6:31:54 AM",
+                        "playerName": "Balstyrko",
+                        "playerId": 19819101,
+                        "status": "MEMBER"
+                    },
+                    {
+                        "joinDate": "Jan 28, 2012 5:07:44 PM",
+                        "inviteDate": "Jan 28, 2012 5:07:39 PM",
+                        "playerName": "bazookabob",
+                        "playerId": 22367963,
+                        "status": "MEMBER"
+                    },
+                    {
+                        "joinDate": "Apr 27, 2012 12:35:07 PM",
+                        "inviteDate": "Apr 27, 2012 12:33:32 PM",
+                        "playerName": "Guardsman Bob",
+                        "playerId": 20820067,
+                        "status": "MEMBER"
+                    }
+                ]
+            }
+        },
+        "lastGameDate": "May 4, 2012 1:20:03 PM",
+        "modifyDate": "May 24, 2013 4:23:17 AM",
+        "messageOfDay": null,
+        "_success": 1,
+        "teamId": {
+            "fullId": "TEAM-2aacd57e-bf50-44c0-b2da-cd590447fe7b"
+        },
+        "lastJoinDate": "May 4, 2012 11:55:31 AM",
+        "secondLastJoinDate": null,
+        "secondsUntilEligibleForDeletion": 9.2233720368548e+18,
+        "matchHistory": {
+            "array": [
+                {
+                    "gameMode": "CLASSIC",
+                    "mapId": 1,
+                    "assists": 4,
+                    "opposingTeamName": "TBTEST2",
+                    "invalid": false,
+                    "deaths": 15,
+                    "gameId": 380193060,
+                    "kills": 7,
+                    "win": false,
+                    "date": 1336162803072,
+                    "opposingTeamKills": 15
+                },
+                {
+                    "gameMode": "CLASSIC",
+                    "mapId": 1,
+                    "assists": 56,
+                    "opposingTeamName": "MrSpaceAnimals",
+                    "invalid": false,
+                    "deaths": 32,
+                    "gameId": 380140799,
+                    "kills": 29,
+                    "win": false,
+                    "date": 1336160736747,
+                    "opposingTeamKills": 32
+                },
+                {
+                    "gameMode": "CLASSIC",
+                    "mapId": 1,
+                    "assists": 12,
+                    "opposingTeamName": "Take the Bait",
+                    "invalid": false,
+                    "deaths": 14,
+                    "gameId": 373494978,
+                    "kills": 6,
+                    "win": false,
+                    "date": 1335559637734,
+                    "opposingTeamKills": 14
+                },
+                {
+                    "gameMode": "CLASSIC",
+                    "mapId": 1,
+                    "assists": 6,
+                    "opposingTeamName": "Take the Bait",
+                    "invalid": false,
+                    "deaths": 16,
+                    "gameId": 373472557,
+                    "kills": 7,
+                    "win": false,
+                    "date": 1335557457671,
+                    "opposingTeamKills": 16
+                },
+                {
+                    "gameMode": "CLASSIC",
+                    "mapId": 1,
+                    "assists": 62,
+                    "opposingTeamName": "Painful things ftw",
+                    "invalid": false,
+                    "deaths": 5,
+                    "gameId": 300250822,
+                    "kills": 36,
+                    "win": true,
+                    "date": 1327803530364,
+                    "opposingTeamKills": 0
+                },
+                {
+                    "gameMode": "CLASSIC",
+                    "mapId": 1,
+                    "assists": 45,
+                    "opposingTeamName": "TheFeeteD",
+                    "invalid": false,
+                    "deaths": 9,
+                    "gameId": 300235541,
+                    "kills": 31,
+                    "win": true,
+                    "date": 1327801146891,
+                    "opposingTeamKills": 0
+                }
+            ]
+        },
+        "name": "Wheelchair Thieves",
+        "thirdLastJoinDate": null,
+        "libteemo": "1.0",
+        "createDate": "Jan 28, 2012 6:31:54 AM"
+    }
+}
