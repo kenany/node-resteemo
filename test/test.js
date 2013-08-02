@@ -44,8 +44,9 @@ describe('node-resteemo', function() {
     it('should be a function', function() {
       teemo.player.should.be.a('function');
     });
-    it('should return an object', function() {
+    it('should return an object that is deep equal', function() {
       profile.should.be.an('object');
+      profile.should.deep.equal(require(DATA_FOLDER + 'profile.json'));
     });
     it('should work with full platform names', function(done) {
       scout
@@ -55,6 +56,7 @@ describe('node-resteemo', function() {
       teemo.player(TEST_PLATFORM_FULL, TEST_SUMMONER, function(error, prof) {
         should.not.exist(error);
         should.exist(prof);
+        prof.should.deep.equal(require(DATA_FOLDER + 'profile.json'));
         done();
       });
     });
@@ -111,8 +113,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.ingame.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         game.should.be.an('object');
+        game.should.deep.equal(require(DATA_FOLDER + 'ingame.json'));
       });
     });
 
@@ -135,8 +138,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.recentGames.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         games.should.be.an('object');
+        games.should.deep.equal(require(DATA_FOLDER + 'recent_games.json'));
       });
     });
 
@@ -159,8 +163,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.influencePoints.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         points.should.be.an('object');
+        points.should.deep.equal(require(DATA_FOLDER + 'influence_points.json'));
       });
     });
 
@@ -183,8 +188,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.runes.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         runes.should.be.an('object');
+        runes.should.deep.equal(require(DATA_FOLDER + 'runes.json'));
       });
     });
 
@@ -207,8 +213,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.mastery.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         pages.should.be.an('object');
+        pages.should.deep.equal(require(DATA_FOLDER + 'mastery.json'));
       });
     });
 
@@ -231,8 +238,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.leagues.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         leagues.should.be.an('object');
+        leagues.should.deep.equal(require(DATA_FOLDER + 'leagues.json'));
       });
     });
 
@@ -255,8 +263,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.honor.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         honor.should.be.an('object');
+        honor.should.deep.equal(require(DATA_FOLDER + 'honor.json'));
       });
     });
 
@@ -279,8 +288,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.rankedStats.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         stats.should.be.an('object');
+        stats.should.deep.equal(require(DATA_FOLDER + 'ranked_stats.json'));
       });
     });
 
@@ -303,8 +313,9 @@ describe('node-resteemo', function() {
       it('should be a function', function() {
         teemo.player.teams.should.be.a('function');
       });
-      it('should return an object', function() {
+      it('should return an object that is deep equal', function() {
         teams.should.be.an('object');
+        teams.should.deep.equal(require(DATA_FOLDER + 'teams.json'));
       });
     });
   });
@@ -328,8 +339,9 @@ describe('node-resteemo', function() {
     it('should be a function', function() {
       teemo.team.should.be.a('function');
     });
-    it('should return an object', function() {
+    it('should return an object that is deep equal', function() {
       matches.should.be.an('object');
+      matches.should.deep.equal(require(DATA_FOLDER + 'tag.json'));
     });
 
     describe('leagues', function() {
@@ -353,6 +365,7 @@ describe('node-resteemo', function() {
       });
       it('should return an object', function() {
         leagues.should.be.an('object');
+        leagues.should.deep.equal(require(DATA_FOLDER + 'team_leagues.json'));
       });
     });
   });
@@ -375,8 +388,9 @@ describe('node-resteemo', function() {
     it('should be a function', function() {
       teemo.freeWeek.should.be.a('function');
     });
-    it('should return an object', function() {
+    it('should return an object that is deep equal', function() {
       week.should.be.an('object');
+      week.should.deep.equal(require(DATA_FOLDER + 'free_week.json'));
     });
   });
 });

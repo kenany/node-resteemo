@@ -162,12 +162,13 @@ module.exports = function(refererString) {
       options.path = '/' + options.path;
     }
 
-    if (!_.isUndefined(options.summoner)) {
+    if (options.summoner) {
       get('/player/' + shortPlatform + '/' + options.summoner + options.path + (options.season || ''), callback);
     }
     else if (options.tag || options.guid) {
       get('/team/' + shortPlatform + options.path + '/' + (options.tag || options.guid) + (options.guid ? '/leagues' : ''), callback);
-    } else {
+    }
+    else {
       get('/service-state/' + shortPlatform + options.path, callback);
     }
   }
