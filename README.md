@@ -100,10 +100,13 @@ shorthand version.
 
 ## Release notes
 
-### 2.2.0
+### 2.3.0
 
-- Added `resteemo.player.rankedStats(platform, summoner, season, callback)`
-- Platform check is now a little faster
-- Update request to 2.22.x
+- Added `resteemo.player.ingame(platform, summoner, callback)`
+- Added `resteemo.player.teams(platform, summoner, callback)`
+- Added `resteemoo.team(platform, tag, callback)`
+- Added `resteemo.team.leagues(platform, guid, callback)`
+- Simplified second success check
+- Update request to 2.25.x
 
 View previous releases [here](https://github.com/KenanY/node-resteemo/wiki/Changelog).
