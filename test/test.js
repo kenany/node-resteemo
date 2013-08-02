@@ -1,8 +1,6 @@
-var chai = require('chai');
-var should = chai.should();
+var should = require('chai').should();
 
-var nock = require('nock');
-var scout = nock('http://api.captainteemo.com');
+var scout = require('nock')('http://api.captainteemo.com');
 
 var resteemo = require('../');
 var teemo = resteemo('node-resteemo test suite');
