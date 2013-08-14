@@ -1,6 +1,6 @@
 var should = require('chai').should();
 
-var scout = require('nock')('http://api.captainteemo.com');
+var scout = require('nock')('https://teemojson.p.mashape.com');
 
 var resteemo = require('../');
 var teemo = resteemo('node-resteemo test suite');
@@ -31,8 +31,8 @@ describe('node-resteemo', function() {
   it('should return an object', function() {
     teemo.should.be.an('object');
   });
-  it('should throw error if referer string is not provided', function() {
-    resteemo.should.throw(/refererString/);
+  it('should throw error if api key is not provided', function() {
+    resteemo.should.throw(/apiKey/);
   });
 
   describe('player', function() {

@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var request = require('request');
 
-var ENDPOINT = 'http://api.captainteemo.com';
+var ENDPOINT = 'https://teemojson.p.mashape.com';
 var PLATFORMS = [
   {'short': 'na', 'full': 'North_America'},
   {'short': 'br', 'full': 'Brasil'},
@@ -88,14 +88,14 @@ function responseHandler(req, callback) {
 }
 
 /**
- * Establishes the user agent of all API calls.
+ * Establishes the API key to use.
  *
- * @param {String} refererString The referer string to use in API calls.
+ * @param {String} apiKey Your API key.
  * @return {Object}
  */
-module.exports = function(refererString) {
-  if (!_.isString(refererString)) {
-    var error = brandError('`refererString` not defined');
+module.exports = function(apiKey) {
+  if (!_.isString(apiKey)) {
+    var error = brandError('`apiKey` not defined');
     throw error;
   }
 
@@ -115,13 +115,13 @@ module.exports = function(refererString) {
     }
 
     var headers = {
-      'Accept'    : 'application/json',
-      'User-Agent': refererString
+      'Accept': 'application/json',
+      'X-Mashape-Authorization': apiKey
     };
 
     var requestOptions = {
-      method : method,
-      uri    : ENDPOINT + path,
+      method: method,
+      uri: ENDPOINT + path,
       headers: headers
     };
 
