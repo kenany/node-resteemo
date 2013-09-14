@@ -52,6 +52,10 @@ Looks up information for a team using String `tag` or String `guid` on String
 - `teemo.team(platform, tag, callback)`
 - `teemo.team.leagues(platform, guid, callback)`
 
+### Platform requests
+
+- `teemo.freeWeek(platform, callback)`
+
 ## Supported platforms
 
 Below is a table of the platforms that RESTeemo supports. When polling
@@ -100,13 +104,12 @@ shorthand version.
 
 ## Release notes
 
-### 2.3.0
+### 2.4.0
 
-- Added `resteemo.player.ingame(platform, summoner, callback)`
-- Added `resteemo.player.teams(platform, summoner, callback)`
-- Added `resteemoo.team(platform, tag, callback)`
-- Added `resteemo.team.leagues(platform, guid, callback)`
-- Simplified second success check
-- Update request to 2.25.x
+- [#6](https://github.com/KenanY/node-resteemo/issues/6): Added free week call.
+`teemo.freeWeek(platform, callback)`
+- Updated Lo-Dash to 2.0.x and switched to using small npm modules instead of
+the whole library.
+- Updated request to 2.27.x
 
 View previous releases [here](https://github.com/KenanY/node-resteemo/wiki/Changelog).
