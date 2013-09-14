@@ -1,4 +1,8 @@
-var _ = require('lodash');
+var find = require('lodash.find');
+var isFunction = require('lodash.isfunction');
+var isNull = require('lodash.isnull');
+var isString = require('lodash.isstring');
+var isUndefined = require('lodash.isundefined');
 var request = require('request');
 
 var ENDPOINT = 'http://api.captainteemo.com';
@@ -33,13 +37,13 @@ function brandError(value) {
  *   `null`.
  */
 function normalizePlatform(platform) {
-  var matchFromShortPlatform = _.find(PLATFORMS, {'short': platform});
-  if (!_.isUndefined(matchFromShortPlatform)) {
+  var matchFromShortPlatform = find(PLATFORMS, {'short': platform});
+  if (!isUndefined(matchFromShortPlatform)) {
     return platform;
   }
 
-  var matchFromFullPlatform = _.find(PLATFORMS, {'full': platform});
-  if (!_.isUndefined(matchFromFullPlatform)) {
+  var matchFromFullPlatform = find(PLATFORMS, {'full': platform});
+  if (!isUndefined(matchFromFullPlatform)) {
     return matchFromFullPlatform['short'];
   }
 
@@ -75,7 +79,7 @@ function responseHandler(req, callback) {
         return callback(error);
       }
 
-      if (!_.isUndefined(response.data._success)) {
+      if (!isUndefined(response.data._success)) {
         if (!response.data._success) {
           var error = brandError('api failed at second success check');
           return callback(error);
@@ -94,7 +98,7 @@ function responseHandler(req, callback) {
  * @return {Object}
  */
 module.exports = function(refererString) {
-  if (!_.isString(refererString)) {
+  if (!isString(refererString)) {
     var error = brandError('`refererString` not defined');
     throw error;
   }
@@ -109,7 +113,7 @@ module.exports = function(refererString) {
    *   `responseHandler`.
    */
   function prepareRequest(method, path, callback) {
-    if (!_.isFunction(callback)) {
+    if (!isFunction(callback)) {
       var error = brandError('missing callback');
       throw error;
     }
@@ -151,12 +155,12 @@ module.exports = function(refererString) {
    */
   function constructPath(options, callback) {
     var shortPlatform = normalizePlatform(options.platform);
-    if (_.isNull(shortPlatform)) {
+    if (isNull(shortPlatform)) {
       var error = brandError('invalid platform');
       return callback(error);
     }
 
-    if (_.isUndefined(options.path)) {
+    if (isUndefined(options.path)) {
       options.path = '';
     } else {
       options.path = '/' + options.path;
