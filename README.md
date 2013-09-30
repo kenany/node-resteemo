@@ -104,12 +104,11 @@ shorthand version.
 
 ## Release notes
 
-### 2.4.0
+### 2.4.1
 
-- [#6](https://github.com/KenanY/node-resteemo/issues/6): Added free week call.
-`teemo.freeWeek(platform, callback)`
-- Updated Lo-Dash to 2.0.x and switched to using small npm modules instead of
-the whole library.
-- Updated request to 2.27.x
+- Updated lodash.isundefined to 2.2.x
+- Updated lodash.isstring to 2.2.x
+- Updated lodash.isnull to 2.2.x
+- Updated lodash.isfunction to 2.2.x
 
 View previous releases [here](https://github.com/KenanY/node-resteemo/wiki/Changelog).
