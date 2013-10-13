@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/KenanY/node-resteemo.png)](https://travis-ci.org/KenanY/node-resteemo)
 [![Dependency Status](https://gemnasium.com/KenanY/node-resteemo.png)](https://gemnasium.com/KenanY/node-resteemo)
 
-RESTeemo API wrapper for Node. Powered by Quickfind.
+[RESTeemo API](https://www.mashape.com/meepo/league-of-legends) wrapper for
+Node.js.
 
 ![captain teemo on duty](https://a248.e.akamai.net/camo.github.com/32fb5a8ead7c5cdff5b8003b84b0a7189a05d67c/687474703a2f2f692e696d6775722e636f6d2f654964593746612e706e67)
 
