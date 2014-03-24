@@ -8,9 +8,9 @@
   ],
   "license": "MIT",
   "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
-  "main": "./index.js",
+  "main": "index.js",
   "directories": {
-    "test": "./test"
+    "test": "test"
   },
   "repository": "KenanY/node-resteemo",
   "scripts": {
