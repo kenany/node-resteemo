@@ -6,10 +6,6 @@
     "api",
     "league-of-legends"
   ],
-  "homepage": "https://github.com/KenanY/node-resteemo",
-  "bugs": {
-    "url": "https://github.com/KenanY/node-resteemo/issues"
-  },
   "license": "MIT",
   "author": {
     "name": "Kenan Yildirim",
