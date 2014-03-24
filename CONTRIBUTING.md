@@ -4,5 +4,5 @@ Run tests and generate coverage report:
 
 ``` bash
 $ npm test
-$ npm run-script cover
+$ npm run cover
 ```
