@@ -7,11 +7,7 @@
     "league-of-legends"
   ],
   "license": "MIT",
-  "author": {
-    "name": "Kenan Yildirim",
-    "email": "kenan@kenany.me",
-    "url": "http://kenany.me/"
-  },
+  "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
   "main": "./index.js",
   "directories": {
     "test": "./test"
