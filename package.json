@@ -20,7 +20,7 @@
   "directories": {
     "test": "./test"
   },
-  "repository": "git://github.com/KenanY/node-resteemo.git",
+  "repository": "KenanY/node-resteemo",
   "scripts": {
     "cover": "istanbul cover --report 'html' _mocha -- -R spec",
     "test": "mocha -R spec"
