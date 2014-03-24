@@ -6,13 +6,13 @@
     "api",
     "league-of-legends"
   ],
+  "repository": "KenanY/node-resteemo",
   "license": "MIT",
   "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
-  "repository": "KenanY/node-resteemo",
   "scripts": {
     "cover": "istanbul cover --report 'html' _mocha -- -R spec",
     "test": "mocha -R spec"
