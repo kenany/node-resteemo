@@ -1,7 +1,7 @@
 # node-resteemo
 
 [![Build Status](https://travis-ci.org/KenanY/node-resteemo.svg?branch=master)](https://travis-ci.org/KenanY/node-resteemo)
-[![Dependency Status](https://gemnasium.com/KenanY/node-resteemo.png)](https://gemnasium.com/KenanY/node-resteemo)
+[![Dependency Status](https://gemnasium.com/KenanY/node-resteemo.svg)](https://gemnasium.com/KenanY/node-resteemo)
 
 [RESTeemo API](https://www.mashape.com/meepo/league-of-legends) wrapper for
 Node.js.
