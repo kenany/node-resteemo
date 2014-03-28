@@ -6,7 +6,7 @@
 [RESTeemo API](https://www.mashape.com/meepo/league-of-legends) wrapper for
 Node.js.
 
-![captain teemo on duty](https://a248.e.akamai.net/camo.github.com/32fb5a8ead7c5cdff5b8003b84b0a7189a05d67c/687474703a2f2f692e696d6775722e636f6d2f654964593746612e706e67)
+![captain teemo on duty](https://cloud.githubusercontent.com/assets/733364/2572910/cf934888-b919-11e3-8706-fa839ba5a22f.png)
 
 ## Installation
 
